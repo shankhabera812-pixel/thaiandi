@@ -1,5 +1,5 @@
 /**
- * Main — Brown Rice 2 Thai Cuisine
+ * Main — Thai & I
  * Sticky nav, scroll reveal, mobile menu, back-to-top, active nav link
  */
 (function () {

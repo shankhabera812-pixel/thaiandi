@@ -5,9 +5,9 @@
 (function () {
   'use strict';
 
-  const TOAST_URL    = 'https://www.toasttab.com/brown-rice-2-184-west-boylston-street/v3';
-  const GRUBHUB_URL  = 'https://brownricethaicuisine.dine.online/';
-  const DOORDASH_URL = 'https://order.online/business/brown-rice-2-thai-cuisine--11626800';
+  const TOAST_URL    = 'https://order.toasttab.com/online/thai-i';
+  const GRUBHUB_URL  = 'https://www.grubhub.com/restaurant/thai-and-i-restaurant-274-south-st-shrewsbury/2196678';
+  const DOORDASH_URL = 'https://www.doordash.com/store/thai-and-i-shrewsbury-865539/';
 
   function formatPrice(val) {
     return '$' + val.toFixed(2);
@@ -53,7 +53,7 @@
       html += `<p class="menu-protein-note">Choose your protein at checkout — prices shown are starting prices.</p>`;
     }
 
-    if (tab.id === 'desserts') {
+    if (tab.id === 'dessert') {
       html += `
         <div class="menu-dessert-accent">
           <img src="assets/images/desertheroshot.jpg"

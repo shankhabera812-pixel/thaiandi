@@ -1,5 +1,5 @@
 /* ============================================================
-   GLOBAL STYLES — Brown Rice 2 Thai Cuisine
+   GLOBAL STYLES — Thai & I
    Reset, base typography, utilities, scroll behavior
    ============================================================ */
 
@@ -193,64 +193,45 @@ ul, ol {
   align-items: center;
 }
 
-.cta-btn {
+/* ─── Order buttons — wordmark system ───────────────────── */
+.order-platforms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-sm);
+  align-items: center;
+}
+
+.order-btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 0.875rem 1.25rem;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
   border: none;
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: opacity var(--duration-base) var(--ease),
-              transform var(--duration-fast) var(--ease);
   text-decoration: none;
   min-height: 48px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-body);
+  transition: opacity var(--duration-base) var(--ease),
+              transform var(--duration-fast) var(--ease);
 }
-.cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
-.cta-btn:active { transform: scale(0.98); }
+.order-btn:hover  { opacity: 0.88; transform: translateY(-2px); }
+.order-btn:active { transform: scale(0.97); }
 
-.cta-icon {
-  width: 22px;
-  height: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.cta-icon svg { width: 100%; height: 100%; }
-
-.cta-label {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-  line-height: 1.25;
-}
-.cta-label-sub {
-  font-size: 9px;
-  font-weight: 400;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  opacity: 0.72;
-}
-.cta-label-main {
-  font-size: 13px;
-  font-weight: 500;
+.order-btn__wordmark {
+  display: block;
+  height: 20px;
+  width: auto;
+  pointer-events: none;
 }
 
-.cta-toast {
-  background: var(--forest-charcoal);
-  color: var(--warm-linen);
-  padding: 0.875rem 1.5rem;
-}
-.cta-grubhub {
-  background: var(--grubhub);
-  color: var(--white);
-}
-.cta-doordash {
-  background: var(--doordash);
-  color: var(--white);
-}
+/* Size modifiers */
+.order-btn--hero .order-btn__wordmark { height: 18px; }
+.order-btn--lg   .order-btn__wordmark { height: 22px; }
+
+/* Platform colours */
+.order-btn--toast    { background: var(--forest-charcoal); padding-inline: 1.75rem; }
+.order-btn--grubhub  { background: var(--grubhub); }
+.order-btn--doordash { background: var(--doordash); }
 
 /* ─── Divider ────────────────────────────────────────────── */
 .divider {

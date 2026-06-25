@@ -1,4 +1,4 @@
-# Brown Rice 2 — Image Manifest
+# Thai & I — Image Manifest
 
 All client images should be placed in this directory.
 Rename files to match the exact filenames listed below before running the build.
