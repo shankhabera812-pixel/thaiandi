@@ -30,7 +30,7 @@ Then visit `http://localhost:3000`.
 - **Address:** 274 South St, Shrewsbury, MA 01545
 - **Phone (primary):** (508) 762-4814
 - **Phone (secondary):** (508) 762-4810
-- **Hours:** Monday Closed · Tue–Sun 11:00 AM – 9:00 PM
+- **Hours:** Tuesday Closed · Mon, Wed–Sun 11:00 AM – 9:00 PM
 - **Domain:** www.thaiandishrewsbury.com
 
 ## Pre-launch checklist
@@ -39,5 +39,5 @@ Then visit `http://localhost:3000`.
 - [ ] Toast / Grubhub / DoorDash URLs verified live
 - [ ] Phone numbers confirmed with owner
 - [ ] Google Maps embed URL updated in contact section
-- [ ] Menu prices updated by owner (currently 0 as placeholders)
+- [x] Menu prices updated from Toast-verified reference
 - [ ] Test on Chrome, Safari, Firefox + mobile

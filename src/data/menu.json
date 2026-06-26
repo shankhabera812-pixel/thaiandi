@@ -1,7 +1,6 @@
 {
-  "footnote": "Lunch pricing applies until 3 PM. Prices shown are placeholders — current pricing to be confirmed by owner.",
-  "proteinNote": "Noodles & Rice, Popular Combinations, and Curries are prepared with your choice of protein.",
-  "proteinTiers": [],
+  "footnote": "Lunch pricing until 3 PM. Protein-choice items show starting prices; see protein options within each section. Dinner pricing applies after 3 PM.",
+  "proteinNote": "Noodles & Rice, Popular Combinations, and Curries are prepared with your choice of protein. Prices shown are starting prices.",
   "quickSets": {
     "sectionLabel": "Quick n' Easy Sets",
     "tagline": "Choose your main, pick your starter, customize your protein.",
@@ -121,24 +120,24 @@
       "subsections": [
         {
           "items": [
-            { "id": "edamame", "name": "Edamame", "description": "Seasoned Japanese snack; steamed soybean pods seasoned with salt.", "price": 0 },
-            { "id": "thai-crispy-rolls", "name": "Thai Crispy Rolls", "description": "Crispy rice paper filled with chicken and mixed vegetables; served with sweet chili sauce.", "price": 0 },
-            { "id": "soft-spring-rolls", "name": "Thai Soft Spring Rolls", "description": "Steamed vermicelli, cooked chicken, lettuce, carrot, cucumber wrapped in fresh spring roll skins, served with sweet and sour sauce, topped with ground peanuts.", "price": 0 },
-            { "id": "tofu-triangles", "name": "Tofu Triangles", "description": "Deep-fried tofu served with sweet and sour sauce topped with ground peanut.", "price": 0 },
-            { "id": "pork-dumplings", "name": "Pork Dumplings", "description": "Steamed or fried pork dumplings served with light soy sauce.", "price": 0 },
-            { "id": "chive-pancake", "name": "Chive Pancake", "description": "Fried or steamed chive pancake served with ginger sauce.", "price": 0 },
-            { "id": "golden-triangle", "name": "Golden Triangle", "description": "Deep-fried egg roll skins stuffed with vegetables, served with sweet chili sauce.", "price": 0 },
-            { "id": "scallion-pancakes", "name": "Scallion Pancakes", "description": "Pan-fried scallion pancakes.", "price": 0 },
-            { "id": "shrimp-shumai", "name": "Shrimp Shumai", "description": "Shrimp dumplings served with ginger sauce (steamed or deep-fried).", "price": 0 },
-            { "id": "veggie-dumplings", "name": "Vegetable Dumplings", "description": "Steamed or fried vegetable dumplings served with ginger sauce.", "price": 0 },
-            { "id": "chicken-satay", "name": "Chicken Satay", "description": "Charcoal-grilled chicken tenders on skewers, marinated with Thai spices; served with peanut sauce and cucumber sauce.", "price": 0 },
-            { "id": "chicken-wings", "name": "Chicken Wings", "description": "Deep-fried chicken wings marinated with herbs and house sauce.", "price": 0 },
-            { "id": "crab-rangoon", "name": "Crab Rangoon", "description": "Crabmeat and cream cheese filling inside crispy wonton wrappers.", "price": 0 },
-            { "id": "crispy-brussels", "name": "Crispy Brussels Sprout", "description": "Brussels sprout seasoned Thai style.", "price": 0 },
-            { "id": "coconut-shrimp", "name": "Coconut Shrimp", "description": "Shrimp in coconut batter, deep fried until golden.", "price": 0 },
-            { "id": "shrimp-tempura", "name": "Shrimp Tempura", "description": "Shrimp in tempura batter, deep fried until crispy.", "price": 0 },
-            { "id": "sampler", "name": "Sampler", "description": "Combination of (2) crispy rolls, (2) vegetable rolls, (2) samosa bag, (2) crab rangoon, (2) coconut shrimp, (2) chicken satay; served with peanut sauce and cucumber sauce.", "price": 0 },
-            { "id": "veggie-sampler", "name": "Vegetarian Sampler", "description": "(2) Vegetable rolls, (4) tofu triangle, (4) chive pancake, crispy brussels sprouts.", "price": 0 }
+            { "id": "edamame", "name": "Edamame", "description": "Seasoned Japanese snack; steamed soybean pods seasoned with salt.", "price": 8.95 },
+            { "id": "thai-crispy-rolls", "name": "Thai Crispy Rolls", "description": "Crispy rice paper filled with chicken and mixed vegetables; served with sweet chili sauce.", "price": 8.95 },
+            { "id": "soft-spring-rolls", "name": "Thai Soft Spring Rolls", "description": "Steamed vermicelli, cooked chicken, lettuce, carrot, cucumber wrapped in fresh spring roll skins, served with sweet and sour sauce, topped with ground peanuts.", "price": 8.95 },
+            { "id": "tofu-triangles", "name": "Tofu Triangles", "description": "Deep-fried tofu served with sweet and sour sauce topped with ground peanut.", "price": 8.95 },
+            { "id": "pork-dumplings", "name": "Pork Dumplings", "description": "Steamed or fried pork dumplings served with light soy sauce.", "price": 8.95 },
+            { "id": "chive-pancake", "name": "Chive Pancake", "description": "Fried or steamed chive pancake served with ginger sauce.", "price": 8.95 },
+            { "id": "golden-triangle", "name": "Golden Triangle", "description": "Deep-fried egg roll skins stuffed with vegetables, served with sweet chili sauce.", "price": 8.95 },
+            { "id": "scallion-pancakes", "name": "Scallion Pancakes", "description": "Pan-fried scallion pancakes.", "price": 8.95 },
+            { "id": "shrimp-shumai", "name": "Shrimp Shumai", "description": "Shrimp dumplings served with ginger sauce (steamed or deep-fried).", "price": 8.95 },
+            { "id": "veggie-dumplings", "name": "Vegetable Dumplings", "description": "Steamed or fried vegetable dumplings served with ginger sauce.", "price": 8.95 },
+            { "id": "chicken-satay", "name": "Chicken Satay", "description": "Charcoal-grilled chicken tenders on skewers, marinated with Thai spices; served with peanut sauce and cucumber sauce.", "price": 9.95 },
+            { "id": "chicken-wings", "name": "Chicken Wings", "description": "Deep-fried chicken wings marinated with herbs and house sauce.", "price": 9.95 },
+            { "id": "crab-rangoon", "name": "Crab Rangoon", "description": "Crabmeat and cream cheese filling inside crispy wonton wrappers.", "price": 8.95 },
+            { "id": "crispy-brussels", "name": "Crispy Brussels Sprout", "description": "Brussels sprout seasoned Thai style.", "price": 8.95 },
+            { "id": "coconut-shrimp", "name": "Coconut Shrimp", "description": "Shrimp in coconut batter, deep fried until golden.", "price": 8.95 },
+            { "id": "shrimp-tempura", "name": "Shrimp Tempura", "description": "Shrimp in tempura batter, deep fried until crispy.", "price": 8.95 },
+            { "id": "sampler", "name": "Sampler", "description": "Combination of (2) crispy rolls, (2) vegetable rolls, (2) samosa bag, (2) crab rangoon, (2) coconut shrimp, (2) chicken satay; served with peanut sauce and cucumber sauce.", "price": 16.95 },
+            { "id": "veggie-sampler", "name": "Vegetarian Sampler", "description": "(2) Vegetable rolls, (4) tofu triangle, (4) chive pancake, crispy brussels sprouts.", "price": 15.95 }
           ]
         }
       ]
@@ -150,8 +149,9 @@
       "subsections": [
         {
           "items": [
-            { "id": "larb-yum", "name": "Chicken or Beef Salad (Larb Gai / Yum Nue)", "description": "Ground chicken or sliced beef with cucumber, lemongrass, ground roasted rice grain, scallion, cilantro mixed in spicy lime juice.", "price": 0 },
-            { "id": "papaya-salad", "name": "Papaya Salad (Som Tum)", "description": "Shredded papaya mixed with string beans, tomato, chili in spicy lime sauce, topped with peanuts; served with sticky rice.", "price": 0 }
+            { "id": "chicken-salad", "name": "Chicken Salad (Larb Gai)", "description": "Ground chicken with cucumber, lemongrass, ground roasted rice grain, scallion, and cilantro mixed in spicy lime juice.", "price": 14.95 },
+            { "id": "beef-salad", "name": "Beef Salad (Yum Nue)", "description": "Sliced beef with cucumber, lemongrass, ground roasted rice grain, scallion, and cilantro mixed in spicy lime juice.", "price": 14.95 },
+            { "id": "papaya-salad", "name": "Papaya Salad (Som Tum)", "description": "Shredded papaya mixed with string beans, tomato, chili in spicy lime sauce, topped with peanuts; served with sticky rice.", "price": 14.95 }
           ]
         }
       ]
@@ -163,12 +163,12 @@
       "subsections": [
         {
           "items": [
-            { "id": "tom-yum", "name": "Tom Yum", "description": "The world-famous Thai soup spiced with chilies, lemongrass, mushrooms, and lime juice; with choice of chicken or shrimp.", "price": 0 },
-            { "id": "tom-kha-gai", "name": "Tom Kha Gai", "description": "Mild chicken coconut milk soup with galangal root, lime juice, mushrooms, and scallions.", "price": 0 },
-            { "id": "wonton-soup", "name": "Wonton Soup", "description": "Soup with vegetables and wonton wrappers stuffed with ground chicken.", "price": 0 },
-            { "id": "pho", "name": "Pho", "description": "Rice noodles in bone broth with choice of chicken, beef, or pork, served in a large bowl.", "price": 0 },
-            { "id": "seafood-tom-yum", "name": "Seafood Tom Yum", "description": "Tom yum soup with shrimp, squid, and scallops.", "price": 0 },
-            { "id": "duck-noodle-soup", "name": "Roasted Duck Noodle Soup", "description": "Rice noodles with sliced roasted duck and bean sprouts in duck broth, topped with chopped scallion and garlic.", "price": 0 }
+            { "id": "tom-yum", "name": "Tom Yum", "description": "The world-famous Thai soup spiced with chilies, lemongrass, mushrooms, and lime juice; with choice of chicken or shrimp.", "price": 6.95 },
+            { "id": "tom-kha-gai", "name": "Tom Kha Gai", "description": "Mild chicken coconut milk soup with galangal root, lime juice, mushrooms, and scallions.", "price": 7.95 },
+            { "id": "wonton-soup", "name": "Wonton Soup", "description": "Soup with vegetables and wonton wrappers stuffed with ground chicken.", "price": 6.95 },
+            { "id": "pho", "name": "Pho", "description": "Rice noodles in bone broth with choice of chicken, beef, or pork, served in a large bowl.", "price": 12.95 },
+            { "id": "seafood-tom-yum", "name": "Seafood Tom Yum", "description": "Tom yum soup with shrimp, squid, and scallops.", "price": 8.95 },
+            { "id": "duck-noodle-soup", "name": "Roasted Duck Noodle Soup", "description": "Rice noodles with sliced roasted duck and bean sprouts in duck broth, topped with chopped scallion and garlic.", "price": 16.95 }
           ]
         }
       ]
@@ -178,31 +178,49 @@
       "label": "Noodles & Rice",
       "dualPeriod": true,
       "intro": "Stir-fried noodle and rice dishes.",
+      "proteinItem": true,
       "subsections": [
         {
           "period": "lunch",
+          "priceFrom": 12.95,
+          "proteinTiers": [
+            { "label": "Vegetables & Tofu, Tofu, Vegetable, Vegan, or No Meat", "price": 12.95 },
+            { "label": "Chicken, Beef, or Pork", "price": 13.95 },
+            { "label": "Scallops, Shrimp, or Squid", "price": 14.95 },
+            { "label": "Duck or Seafood", "price": 16.95 },
+            { "label": "Crispy Chicken", "price": 17.95 }
+          ],
           "items": [
-            { "id": "pad-thai-l", "name": "Pad Thai", "description": "Stir-fried with rice noodles, egg, scallions, bean sprouts, and ground peanuts.", "price": 0 },
-            { "id": "fiery-pad-thai-l", "name": "Fiery Pad Thai", "description": "Spicy version of traditional Pad Thai.", "price": 0 },
-            { "id": "drunken-noodles-l", "name": "Drunken Noodles", "description": "Wide noodles stir-fried with egg, onion, carrots, green peppers, basil, and scallion.", "price": 0 },
-            { "id": "pad-see-u-l", "name": "Pad See-U", "description": "Stir-fried with wide noodles, cabbage, broccoli, carrots, and bean sprouts.", "price": 0 },
-            { "id": "thai-fried-rice-l", "name": "Thai Special Fried Rice", "description": "Fried rice with egg, peas, onion, and scallions.", "price": 0 },
-            { "id": "pineapple-fr-l", "name": "Pineapple Fried Rice", "description": "Fried rice with egg, pineapple, onion, peas, scallions, and curry powder.", "price": 0 },
-            { "id": "kale-l", "name": "See You in \"Kale\"", "description": "A healthy combination of pad see-u and the super green vegetable \"Kale\" stir-fried and seasoned with light sauce and tofu.", "price": 0 },
-            { "id": "basil-fried-rice-l", "name": "Basil Fried Rice", "description": "House fried rice with basil and spicy prik paw.", "price": 0 }
+            { "id": "pad-thai-l", "name": "Pad Thai", "description": "Stir-fried with rice noodles, egg, scallions, bean sprouts, and ground peanuts." },
+            { "id": "fiery-pad-thai-l", "name": "Fiery Pad Thai", "description": "Spicy version of traditional Pad Thai." },
+            { "id": "drunken-noodles-l", "name": "Drunken Noodles", "description": "Wide noodles stir-fried with egg, onion, carrots, green peppers, basil, and scallion." },
+            { "id": "pad-see-u-l", "name": "Pad See-U", "description": "Stir-fried with wide noodles, cabbage, broccoli, carrots, and bean sprouts." },
+            { "id": "thai-fried-rice-l", "name": "Thai Special Fried Rice", "description": "Fried rice with egg, peas, onion, and scallions." },
+            { "id": "pineapple-fr-l", "name": "Pineapple Fried Rice", "description": "Fried rice with egg, pineapple, onion, peas, scallions, and curry powder." },
+            { "id": "kale-l", "name": "See You in \"Kale\"", "description": "A healthy combination of pad see-u and the super green vegetable \"Kale\" stir-fried and seasoned with light sauce and tofu." },
+            { "id": "basil-fried-rice-l", "name": "Basil Fried Rice", "description": "House fried rice with basil and spicy prik paw." }
           ]
         },
         {
           "period": "dinner",
+          "priceFrom": 14.95,
+          "proteinTiers": [
+            { "label": "Vegetables & Tofu, Vegetable, Tofu, Vegan, or No Meat", "price": 14.95 },
+            { "label": "Chicken, Beef, or Pork", "price": 15.95 },
+            { "label": "Scallops, Shrimp, or Squid", "price": 16.95 },
+            { "label": "Crispy Chicken", "price": 17.95 },
+            { "label": "Seafood", "price": 20.95 },
+            { "label": "Duck", "price": 27.95 }
+          ],
           "items": [
-            { "id": "pad-thai-d", "name": "Pad Thai", "description": "Stir-fried with rice noodles, egg, scallions, bean sprouts, and ground peanuts.", "price": 0 },
-            { "id": "fiery-pad-thai-d", "name": "Fiery Pad Thai", "description": "Spicy version of traditional Pad Thai.", "price": 0 },
-            { "id": "drunken-noodles-d", "name": "Drunken Noodles", "description": "Wide noodles stir-fried with egg, onion, carrots, green peppers, basil, and scallion.", "price": 0 },
-            { "id": "pad-see-u-d", "name": "Pad See-U", "description": "Stir-fried with wide noodles, cabbage, broccoli, carrots, and bean sprouts.", "price": 0 },
-            { "id": "thai-fried-rice-d", "name": "Thai Special Fried Rice", "description": "Fried rice with egg, peas, onion, and scallions.", "price": 0 },
-            { "id": "pineapple-fr-d", "name": "Pineapple Fried Rice", "description": "Fried rice with egg, pineapple, onion, peas, scallions, and curry powder.", "price": 0 },
-            { "id": "kale-d", "name": "See You in \"Kale\"", "description": "A healthy combination of pad see-u and the super green vegetable \"Kale\" stir-fried and seasoned with light sauce and tofu.", "price": 0 },
-            { "id": "basil-fried-rice-d", "name": "Basil Fried Rice", "description": "House fried rice with basil and spicy prik paw.", "price": 0 }
+            { "id": "pad-thai-d", "name": "Pad Thai", "description": "Stir-fried with rice noodles, egg, scallions, bean sprouts, and ground peanuts." },
+            { "id": "fiery-pad-thai-d", "name": "Fiery Pad Thai", "description": "Spicy version of traditional Pad Thai." },
+            { "id": "drunken-noodles-d", "name": "Drunken Noodles", "description": "Wide noodles stir-fried with egg, onion, carrots, green peppers, basil, and scallion." },
+            { "id": "pad-see-u-d", "name": "Pad See-U", "description": "Stir-fried with wide noodles, cabbage, broccoli, carrots, and bean sprouts." },
+            { "id": "thai-fried-rice-d", "name": "Thai Special Fried Rice", "description": "Fried rice with egg, peas, onion, and scallions." },
+            { "id": "pineapple-fr-d", "name": "Pineapple Fried Rice", "description": "Fried rice with egg, pineapple, onion, peas, scallions, and curry powder." },
+            { "id": "kale-d", "name": "See You in \"Kale\"", "description": "A healthy combination of pad see-u and the super green vegetable \"Kale\" stir-fried and seasoned with light sauce and tofu." },
+            { "id": "basil-fried-rice-d", "name": "Basil Fried Rice", "description": "House fried rice with basil and spicy prik paw." }
           ]
         }
       ]
@@ -216,7 +234,15 @@
       "subsections": [
         {
           "period": "lunch",
-          "priceFrom": 0,
+          "priceFrom": 12.95,
+          "proteinTiers": [
+            { "label": "Veggies and Tofu, Tofu Only, or Vegan", "price": 12.95 },
+            { "label": "Chicken, Beef, or Pork", "price": 13.95 },
+            { "label": "Scallop, Shrimp, Squid, Seafood, or Veggies Only", "price": 14.95 },
+            { "label": "Crispy Chicken", "price": 14.95 },
+            { "label": "Salmon", "price": 15.95 },
+            { "label": "Duck", "price": 16.95 }
+          ],
           "items": [
             { "id": "basil-l", "name": "Basil", "description": "Basil, green peppers, onion, mushrooms, broccoli, zucchini, and spicy Thai basil sauce." },
             { "id": "cashew-l", "name": "Cashew Nuts", "description": "Pineapple, zucchini, carrots, onion, green peppers, mushrooms, cashew nuts." },
@@ -228,7 +254,14 @@
         },
         {
           "period": "dinner",
-          "priceFrom": 0,
+          "priceFrom": 16.95,
+          "proteinTiers": [
+            { "label": "Veggies & Tofu, Vegan, Veggies Only, or Tofu Only", "price": 16.95 },
+            { "label": "Chicken, Beef, Pork, or Crispy Chicken", "price": 17.95 },
+            { "label": "Scallop, Shrimp, Squid, or Crispy Shrimp", "price": 18.95 },
+            { "label": "Seafood, Salmon, or Tilapia", "price": 20.95 },
+            { "label": "Duck", "price": 27.95 }
+          ],
           "items": [
             { "id": "basil-d", "name": "Basil", "description": "Basil, green peppers, onion, mushrooms, broccoli, zucchini, and spicy Thai basil sauce." },
             { "id": "cashew-d", "name": "Cashew Nuts", "description": "Pineapple, zucchini, carrots, onion, green peppers, mushrooms, cashew nuts." },
@@ -249,7 +282,13 @@
       "subsections": [
         {
           "period": "lunch",
-          "priceFrom": 0,
+          "priceFrom": 12.95,
+          "proteinTiers": [
+            { "label": "Vegetables & Tofu, Vegetable, Tofu, or Vegan", "price": 12.95 },
+            { "label": "Chicken, Beef, or Pork", "price": 13.95 },
+            { "label": "Scallops, Shrimp, Squid, or Seafood", "price": 14.95 },
+            { "label": "Duck", "price": 16.95 }
+          ],
           "items": [
             { "id": "red-curry-l", "name": "Red Curry", "description": "Bamboo shoots, bell peppers, and basil." },
             { "id": "yellow-curry-l", "name": "Yellow Curry", "description": "Pineapple, potato, carrots, and onion." },
@@ -260,7 +299,15 @@
         },
         {
           "period": "dinner",
-          "priceFrom": 0,
+          "priceFrom": 17.95,
+          "proteinTiers": [
+            { "label": "Veg & Tofu, Vegetable, Tofu, or Vegan", "price": 17.95 },
+            { "label": "Chicken, Beef, or Pork", "price": 18.95 },
+            { "label": "Scallops, Shrimp, or Squid", "price": 20.95 },
+            { "label": "Crispy Chicken", "price": 19.95 },
+            { "label": "Seafood, Salmon, or Tilapia", "price": 22.95 },
+            { "label": "Duck", "price": 27.95 }
+          ],
           "items": [
             { "id": "red-curry-d", "name": "Red Curry", "description": "Bamboo shoots, bell peppers, and basil." },
             { "id": "yellow-curry-d", "name": "Yellow Curry", "description": "Pineapple, potato, carrots, and onion." },
@@ -280,25 +327,25 @@
         {
           "period": "lunch",
           "items": [
-            { "id": "tamarind-fish-l", "name": "Tamarind Fish", "description": "Whole red snapper or salmon in sweet and sour tamarind sauce with assorted vegetables.", "price": 0 },
-            { "id": "mango-curry-l", "name": "Mango Curry", "description": "Chicken and shrimp with mango chunks in yellow curry with coconut milk, onions, carrots, tomatoes, and bell peppers.", "price": 0 },
-            { "id": "spicy-fish-l", "name": "Spicy Fish", "description": "Whole red snapper or salmon in homemade spicy chili sauce with assorted vegetables and crispy basil leaves.", "price": 0 },
-            { "id": "thai-i-special-l", "name": "Thai & I Special", "description": "Ground beef, chicken, or pork stir-fried with spicy authentic basil sauce, fresh chilies, diced string beans, bell peppers, and Thai basil leaves; served with steamed rice and Thai-style fried egg.", "price": 0 },
-            { "id": "veggies-delight-l", "name": "Veggies Delight", "description": "Variety of vegetables stir-fried with light soy sauce.", "price": 0 },
-            { "id": "khao-soi-l", "name": "Khao Soi", "description": "The famous northern noodles in a delicious mix of light yellow curry, chicken, scallions, and fried shallots; vegetarian version available.", "price": 0 },
-            { "id": "seafood-basil-l", "name": "Seafood Basil", "description": "Combination of shrimp, squid, and scallops in spicy basil sauce.", "price": 0 }
+            { "id": "tamarind-fish-l", "name": "Tamarind Fish", "description": "Whole red snapper or salmon in sweet and sour tamarind sauce with assorted vegetables.", "price": 12.95 },
+            { "id": "mango-curry-l", "name": "Mango Curry", "description": "Chicken and shrimp with mango chunks in yellow curry with coconut milk, onions, carrots, tomatoes, and bell peppers.", "price": 13.95 },
+            { "id": "spicy-fish-l", "name": "Spicy Fish", "description": "Whole red snapper or salmon in homemade spicy chili sauce with assorted vegetables and crispy basil leaves.", "price": 12.95 },
+            { "id": "thai-i-special-l", "name": "Thai & I Special", "description": "Ground beef, chicken, or pork stir-fried with spicy authentic basil sauce, fresh chilies, diced string beans, bell peppers, and Thai basil leaves; served with steamed rice and Thai-style fried egg.", "price": 12.95 },
+            { "id": "veggies-delight-l", "name": "Veggies Delight", "description": "Variety of vegetables stir-fried with light soy sauce.", "price": 12.95 },
+            { "id": "khao-soi-l", "name": "Khao Soi", "description": "The famous northern noodles in a delicious mix of light yellow curry, chicken, scallions, and fried shallots; vegetarian version available.", "price": 13.95 },
+            { "id": "seafood-basil-l", "name": "Seafood Basil", "description": "Combination of shrimp, squid, and scallops in spicy basil sauce.", "price": 14.95 }
           ]
         },
         {
           "period": "dinner",
           "items": [
-            { "id": "tamarind-fish-d", "name": "Tamarind Fish", "description": "Whole red snapper or salmon in sweet and sour tamarind sauce with assorted vegetables.", "price": 0 },
-            { "id": "mango-curry-d", "name": "Mango Curry", "description": "Chicken and shrimp with mango chunks in yellow curry with coconut milk, onions, carrots, tomatoes, and bell peppers.", "price": 0 },
-            { "id": "spicy-fish-d", "name": "Spicy Fish", "description": "Whole red snapper or salmon in homemade spicy chili sauce with assorted vegetables and crispy basil leaves.", "price": 0 },
-            { "id": "thai-i-special-d", "name": "Thai & I Special", "description": "Ground beef, chicken, or pork stir-fried with spicy authentic basil sauce, fresh chilies, diced string beans, bell peppers, and Thai basil leaves; served with steamed rice and Thai-style fried egg.", "price": 0 },
-            { "id": "veggies-delight-d", "name": "Veggies Delight", "description": "Variety of vegetables stir-fried with light soy sauce.", "price": 0 },
-            { "id": "khao-soi-d", "name": "Khao Soi", "description": "The famous northern noodles in a delicious mix of light yellow curry, chicken, scallions, and fried shallots; vegetarian version available.", "price": 0 },
-            { "id": "seafood-basil-d", "name": "Seafood Basil", "description": "Combination of shrimp, squid, and scallops in spicy basil sauce.", "price": 0 }
+            { "id": "tamarind-fish-d", "name": "Tamarind Fish", "description": "Whole red snapper or salmon in sweet and sour tamarind sauce with assorted vegetables.", "price": 19.95 },
+            { "id": "mango-curry-d", "name": "Mango Curry", "description": "Chicken and shrimp with mango chunks in yellow curry with coconut milk, onions, carrots, tomatoes, and bell peppers.", "price": 18.95 },
+            { "id": "spicy-fish-d", "name": "Spicy Fish", "description": "Whole red snapper or salmon in homemade spicy chili sauce with assorted vegetables and crispy basil leaves.", "price": 19.95 },
+            { "id": "thai-i-special-d", "name": "Thai & I Special", "description": "Ground beef, chicken, or pork stir-fried with spicy authentic basil sauce, fresh chilies, diced string beans, bell peppers, and Thai basil leaves; served with steamed rice and Thai-style fried egg.", "price": 16.95 },
+            { "id": "veggies-delight-d", "name": "Veggies Delight", "description": "Variety of vegetables stir-fried with light soy sauce.", "price": 16.95 },
+            { "id": "khao-soi-d", "name": "Khao Soi", "description": "The famous northern noodles in a delicious mix of light yellow curry, chicken, scallions, and fried shallots; vegetarian version available.", "price": 16.95 },
+            { "id": "seafood-basil-d", "name": "Seafood Basil", "description": "Combination of shrimp, squid, and scallops in spicy basil sauce.", "price": 19.95 }
           ]
         }
       ]
@@ -312,19 +359,19 @@
         {
           "period": "lunch",
           "items": [
-            { "id": "boston-volcano-l", "name": "Boston Volcano", "description": "Crispy duck coated with tamarind sauce, cashew nuts, mushrooms, carrots, and peas.", "price": 0 },
-            { "id": "rama-duck-l", "name": "Rama Duck", "description": "Crispy roasted duck simmered in red curry and peanut sauce.", "price": 0 },
-            { "id": "bangkok-duck-l", "name": "Bangkok Duck", "description": "Roasted duck sliced and de-boned; topped with ginger sauce and served with vegetables.", "price": 0 },
-            { "id": "orange-duck-l", "name": "Orange Duck", "description": "Crispy roasted duck simmered in orange sauce with mixed vegetables.", "price": 0 }
+            { "id": "boston-volcano-l", "name": "Boston Volcano", "description": "Crispy duck coated with tamarind sauce, cashew nuts, mushrooms, carrots, and peas.", "price": 16.95 },
+            { "id": "rama-duck-l", "name": "Rama Duck", "description": "Crispy roasted duck simmered in red curry and peanut sauce.", "price": 16.95 },
+            { "id": "bangkok-duck-l", "name": "Bangkok Duck", "description": "Roasted duck sliced and de-boned; topped with ginger sauce and served with vegetables.", "price": 16.95 },
+            { "id": "orange-duck-l", "name": "Orange Duck", "description": "Crispy roasted duck simmered in orange sauce with mixed vegetables.", "price": 16.95 }
           ]
         },
         {
           "period": "dinner",
           "items": [
-            { "id": "boston-volcano-d", "name": "Boston Volcano", "description": "Crispy duck coated with tamarind sauce, cashew nuts, mushrooms, carrots, and peas.", "price": 0 },
-            { "id": "rama-duck-d", "name": "Rama Duck", "description": "Crispy roasted duck simmered in red curry and peanut sauce.", "price": 0 },
-            { "id": "bangkok-duck-d", "name": "Bangkok Duck", "description": "Roasted duck sliced and de-boned; topped with ginger sauce and served with vegetables.", "price": 0 },
-            { "id": "orange-duck-d", "name": "Orange Duck", "description": "Crispy roasted duck simmered in orange sauce with mixed vegetables.", "price": 0 }
+            { "id": "boston-volcano-d", "name": "Boston Volcano", "description": "Crispy duck coated with tamarind sauce, cashew nuts, mushrooms, carrots, and peas.", "price": 27.95 },
+            { "id": "rama-duck-d", "name": "Rama Duck", "description": "Crispy roasted duck simmered in red curry and peanut sauce.", "price": 27.95 },
+            { "id": "bangkok-duck-d", "name": "Bangkok Duck", "description": "Roasted duck sliced and de-boned; topped with ginger sauce and served with vegetables.", "price": 27.95 },
+            { "id": "orange-duck-d", "name": "Orange Duck", "description": "Crispy roasted duck simmered in orange sauce with mixed vegetables.", "price": 27.95 }
           ]
         }
       ]
@@ -336,13 +383,13 @@
       "subsections": [
         {
           "items": [
-            { "id": "jasmine-rice", "name": "Steamed Jasmine Rice", "description": "Steamed jasmine white rice.", "price": 0 },
-            { "id": "peanut-sauce", "name": "Peanut Sauce", "description": "House peanut sauce.", "price": 0 },
-            { "id": "brown-rice", "name": "Brown Rice", "description": "Steamed whole-grain brown rice.", "price": 0 },
-            { "id": "house-salad", "name": "House Salad", "description": "Fresh house salad.", "price": 0 },
-            { "id": "coconut-rice", "name": "Coconut Rice", "description": "Steamed rice cooked in coconut milk.", "price": 0 },
-            { "id": "sticky-rice", "name": "Sticky Rice", "description": "Steamed sticky rice.", "price": 0 },
-            { "id": "steamed-veggies", "name": "Steam Mixed Vegetable with Side of Peanut Sauce", "description": "Seasonal mixed vegetables steamed, served with peanut sauce.", "price": 0 }
+            { "id": "jasmine-rice", "name": "Steamed Jasmine Rice", "description": "Steamed jasmine white rice.", "price": 3.95 },
+            { "id": "peanut-sauce", "name": "Peanut Sauce", "description": "House peanut sauce.", "price": 2.95 },
+            { "id": "brown-rice", "name": "Brown Rice", "description": "Steamed whole-grain brown rice.", "price": 4.95 },
+            { "id": "house-salad", "name": "House Salad", "description": "Fresh house salad.", "price": 6.95 },
+            { "id": "coconut-rice", "name": "Coconut Rice", "description": "Steamed rice cooked in coconut milk.", "price": 4.95 },
+            { "id": "sticky-rice", "name": "Sticky Rice", "description": "Steamed sticky rice.", "price": 4.95 },
+            { "id": "steamed-veggies", "name": "Steam Mixed Vegetable with Side of Peanut Sauce", "description": "Seasonal mixed vegetables steamed, served with peanut sauce.", "price": 9.95 }
           ]
         }
       ]
@@ -354,10 +401,10 @@
       "subsections": [
         {
           "items": [
-            { "id": "thai-hot-tea", "name": "Thai Hot Tea", "description": "Traditional Thai hot tea (refillable).", "price": 0 },
-            { "id": "soda", "name": "Soda", "description": "Refillable — Coke, Diet Coke, Sprite, Ginger Ale.", "price": 0 },
-            { "id": "thai-iced-tea", "name": "Thai Iced Tea", "description": "Sweetened or unsweetened.", "price": 0 },
-            { "id": "thai-iced-coffee", "name": "Thai Iced Coffee", "description": "Classic Thai-style iced coffee.", "price": 0 }
+            { "id": "thai-hot-tea", "name": "Thai Hot Tea", "description": "Traditional Thai hot tea (refillable).", "price": 3.00 },
+            { "id": "soda", "name": "Soda", "description": "Refillable — Coke, Diet Coke, Sprite, Ginger Ale.", "price": 3.50 },
+            { "id": "thai-iced-tea", "name": "Thai Iced Tea", "description": "Sweetened or unsweetened.", "price": 4.95 },
+            { "id": "thai-iced-coffee", "name": "Thai Iced Coffee", "description": "Classic Thai-style iced coffee.", "price": 4.95 }
           ]
         }
       ]
@@ -369,10 +416,9 @@
       "subsections": [
         {
           "items": [
-            { "id": "banana-rolls", "name": "Banana Rolls with Honey", "description": "Crispy banana rolls drizzled with honey.", "price": 0 },
-            { "id": "ice-cream", "name": "Ice Cream", "description": "Ginger, coconut, green tea, or red bean.", "price": 0 },
-            { "id": "mango-sticky", "name": "Mango with Sweet Sticky Rice", "description": "Fresh mango slices with sweet coconut sticky rice.", "price": 0 },
-            { "id": "thai-custard", "name": "Thai Custard with Sweet Sticky Rice", "description": "Traditional Thai custard served with sweet sticky rice.", "price": 0 }
+            { "id": "banana-rolls", "name": "Banana Rolls with Honey", "description": "Crispy banana rolls drizzled with honey.", "price": 8.95 },
+            { "id": "mango-sticky", "name": "Mango with Sweet Sticky Rice", "description": "Fresh mango slices with sweet coconut sticky rice.", "price": 9.95 },
+            { "id": "thai-custard", "name": "Thai Custard with Sweet Sticky Rice", "description": "Traditional Thai custard served with sweet sticky rice.", "price": 9.95 }
           ]
         }
       ]

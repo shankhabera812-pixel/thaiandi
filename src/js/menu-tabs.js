@@ -14,13 +14,14 @@
   }
 
   function buildMenuRow(item, priceFrom) {
-    const priceStr = priceFrom
-      ? 'from ' + formatPrice(priceFrom)
-      : item.priceFrom
-      ? 'from ' + formatPrice(item.priceFrom)
-      : item.price
-      ? formatPrice(item.price)
-      : '';
+    let priceStr = '';
+    if (item.price != null && item.price !== '') {
+      priceStr = formatPrice(item.price);
+    } else if (item.priceFrom != null) {
+      priceStr = 'From ' + formatPrice(item.priceFrom);
+    } else if (priceFrom != null) {
+      priceStr = 'From ' + formatPrice(priceFrom);
+    }
 
     return `
       <div class="menu-item">
@@ -30,6 +31,23 @@
           ${priceStr ? `<span class="menu-item-price">${priceStr}</span>` : ''}
         </div>
         ${item.description ? `<p class="menu-item-desc">${escapeHtml(item.description)}</p>` : ''}
+      </div>`;
+  }
+
+  function buildProteinTierBlock(proteinTiers) {
+    if (!proteinTiers || !proteinTiers.length) return '';
+
+    const rows = proteinTiers.map(tier => `
+      <div class="menu-protein-tier-row">
+        <span class="menu-protein-tier-label">${escapeHtml(tier.label)}</span>
+        <span class="menu-protein-tier-dots" aria-hidden="true"></span>
+        <span class="menu-protein-tier-price">${formatPrice(tier.price)}</span>
+      </div>`).join('');
+
+    return `
+      <div class="menu-protein-tiers" aria-label="Protein options and prices">
+        <span class="menu-protein-tiers-label">Protein options</span>
+        ${rows}
       </div>`;
   }
 
@@ -67,6 +85,7 @@
       tab.subsections.forEach(sub => {
         html += `<div class="menu-period-group">`;
         html += buildSubsectionPeriodLabel(sub.period);
+        html += buildProteinTierBlock(sub.proteinTiers);
         html += buildItemsGrid(sub.items, sub.priceFrom || null);
         html += `</div>`;
       });
