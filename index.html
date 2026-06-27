@@ -58,8 +58,10 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap">
+  <!-- Tabler Icons — Sets section category icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="src/styles/tokens.css">
@@ -244,94 +246,161 @@
 
     </section><!-- /#top -->
 
-
     <!-- ══════════════════════════════════════════════════════
          QUICK N' EASY SETS
     ══════════════════════════════════════════════════════ -->
     <section class="sets-section" id="sets" aria-labelledby="sets-heading">
+
+      <!-- 10-Mark Atmospheric Composition: 3-2-2-3 -->
+      <!-- TOP CLUSTER (3) — entry framing -->
+      <span class="dm dm-tl" aria-hidden="true"></span>
+      <span class="dm dm-tr" aria-hidden="true"></span>
+      <span class="dm dm-ti" aria-hidden="true"></span>
+      <!-- SIDE FRAME (2) — lateral enclosure -->
+      <span class="dm dm-ml" aria-hidden="true"></span>
+      <span class="dm dm-mr" aria-hidden="true"></span>
+      <!-- CONTENT ZONE (2) — directional micro-anchors -->
+      <span class="dm dm-pg" aria-hidden="true"></span>
+      <span class="dm dm-ca" aria-hidden="true"></span>
+      <!-- BOTTOM CLUSTER (3) — exit framing -->
+      <span class="dm dm-bl" aria-hidden="true"></span>
+      <span class="dm dm-br" aria-hidden="true"></span>
+      <span class="dm dm-bi" aria-hidden="true"></span>
+
       <div class="container">
         <div class="sets-inner">
 
-          <!-- Editorial header -->
           <div class="sets-editorial reveal">
-            <span class="sets-eyebrow">NEW THIS SEASON</span>
-            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy Sets</h2>
-            <p class="sets-sub">
-              Choose a main. Pick your starter. Customize your protein.
-              Complete meals from $12.95.
-            </p>
-            <ol class="sets-steps" aria-label="How it works">
-              <li class="sets-step">Choose your main</li>
-              <li class="sets-step">Add a starter</li>
-              <li class="sets-step">Pick your protein</li>
-            </ol>
-          </div>
+
+            <!-- Chapter marker — section entry threshold -->
+            <div class="sets-chapter" aria-hidden="true">
+              <div class="sets-chapter-rule"></div>
+              <span class="sets-chapter-label">Sets</span>
+              <div class="sets-chapter-rule"></div>
+            </div>
+
+            <!-- Promotional badge — outlined pill, editorial signal -->
+            <span class="sets-badge">New this season</span>
+
+            <!-- Heading: roman + italic mixed type -->
+            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy <em>Sets</em></h2>
+
+            <!-- Condensed subtitle — single warm invitation -->
+            <p class="sets-sub">Complete meals, your way &mdash; starting from $12.95.</p>
+
+            <!-- Step flow strip — instructional whisper, not structure -->
+            <div class="sets-strip" aria-label="How it works">
+              <span class="sets-strip-label">Choose your main</span>
+              <span class="sets-strip-arrow" aria-hidden="true">&rarr;</span>
+              <span class="sets-strip-label">Add a starter</span>
+              <span class="sets-strip-arrow" aria-hidden="true">&rarr;</span>
+              <span class="sets-strip-label">Pick your protein</span>
+            </div>
+
+          </div><!-- /.sets-editorial -->
 
           <!-- 3 category cards -->
           <div class="sets-category-grid">
+
             <!-- Combinations card -->
             <a class="sets-category-card reveal reveal-delay-1"
                href="https://order.toasttab.com/online/thai-i"
                target="_blank" rel="noopener"
                aria-label="Order Combinations set on Toast">
-              <img class="sets-category-img"
-                   src="assets/images/sets/set-thai-and-i-special.jpg"
-                   alt="Thai &amp; I Special Set combination meal"
-                   loading="lazy">
-              <div class="sets-category-overlay" aria-hidden="true"></div>
-              <span class="sets-category-thai">ผัดรวม</span>
-              <span class="sets-category-name">Combinations</span>
-              <span class="sets-category-count">7 sauce &amp; style choices</span>
-              <span class="sets-category-price">From $13.95</span>
+              <div class="sets-card-img-wrap">
+                <img class="sets-category-img"
+                     src="assets/images/sets/set-thai-and-i-special.jpg"
+                     alt="Thai &amp; I Special Set combination meal"
+                     loading="lazy">
+              </div>
+              <div class="sets-card-body">
+                <div class="sets-card-top">
+                  <span class="sets-category-thai">&#3612;&#3633;&#3604;&#3619;&#3623;&#3617;</span>
+                  <i class="ti ti-flame sets-card-icon" aria-hidden="true"></i>
+                </div>
+                <p class="sets-category-name">Combinations</p>
+                <p class="sets-category-setname">Thai &amp; I Special Set</p>
+                <span class="sets-category-pill">7 styles</span>
+                <div class="sets-card-prow">
+                  <span class="sets-category-price">From $13.95</span>
+                  <span class="sets-card-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
             </a>
-            <!-- Noodles & Fried Rice card -->
+
+            <!-- Noodles & Rice card -->
             <a class="sets-category-card reveal reveal-delay-2"
                href="https://order.toasttab.com/online/thai-i"
                target="_blank" rel="noopener"
-               aria-label="Order Noodles & Fried Rice set on Toast">
-              <img class="sets-category-img"
-                   src="assets/images/sets/set-pad-thai-grubhub.jpg"
-                   alt="Pad Thai Set — noodles and fried rice meal"
-                   loading="lazy">
-              <div class="sets-category-overlay" aria-hidden="true"></div>
-              <span class="sets-category-thai">เส้นและข้าว</span>
-              <span class="sets-category-name">Noodles &amp; Fried Rice</span>
-              <span class="sets-category-count">8 noodle &amp; rice dishes</span>
-              <span class="sets-category-price">From $12.95</span>
+               aria-label="Order Noodles &amp; Rice set on Toast">
+              <div class="sets-card-img-wrap">
+                <img class="sets-category-img"
+                     src="assets/images/sets/set-pad-thai-grubhub.jpg"
+                     alt="Pad Thai Set — noodles and fried rice meal"
+                     loading="lazy">
+              </div>
+              <div class="sets-card-body">
+                <div class="sets-card-top">
+                  <span class="sets-category-thai">&#3648;&#3626;&#3657;&#3609;&#3649;&#3621;&#3632;&#3586;&#3657;&#3634;&#3623;</span>
+                  <i class="ti ti-soup sets-card-icon" aria-hidden="true"></i>
+                </div>
+                <p class="sets-category-name">Noodles &amp; Rice</p>
+                <p class="sets-category-setname">Pad Thai Set</p>
+                <span class="sets-category-pill">8 dishes</span>
+                <div class="sets-card-prow">
+                  <span class="sets-category-price">From $12.95</span>
+                  <span class="sets-card-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
             </a>
+
             <!-- Curries card -->
             <a class="sets-category-card reveal reveal-delay-3"
                href="https://order.toasttab.com/online/thai-i"
                target="_blank" rel="noopener"
                aria-label="Order Curry set on Toast">
-              <img class="sets-category-img"
-                   src="assets/images/sets/set-curry-grubhub.jpg"
-                   alt="Curry Set — Thai curry complete meal"
-                   loading="lazy">
-              <div class="sets-category-overlay" aria-hidden="true"></div>
-              <span class="sets-category-thai">แกงกะหรี่</span>
-              <span class="sets-category-name">Curries</span>
-              <span class="sets-category-count">5 Thai curry varieties</span>
-              <span class="sets-category-price">From $13.95</span>
+              <div class="sets-card-img-wrap">
+                <img class="sets-category-img"
+                     src="assets/images/sets/set-curry-grubhub.jpg"
+                     alt="Curry Set — Thai curry complete meal"
+                     loading="lazy">
+              </div>
+              <div class="sets-card-body">
+                <div class="sets-card-top">
+                  <span class="sets-category-thai">&#3649;&#3585;&#3591;&#3585;&#3632;&#3627;&#3619;&#3637;&#3656;</span>
+                  <i class="ti ti-bowl sets-card-icon" aria-hidden="true"></i>
+                </div>
+                <p class="sets-category-name">Curries</p>
+                <p class="sets-category-setname">Curry Set</p>
+                <span class="sets-category-pill">5 curries</span>
+                <div class="sets-card-prow">
+                  <span class="sets-category-price">From $13.95</span>
+                  <span class="sets-card-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+              </div>
             </a>
-          </div>
 
-          <p class="sets-upcharge reveal" style="text-align:center;font-size:var(--text-xs);color:var(--smoke);margin-top:1.25rem;letter-spacing:0.03em;">
+          </div><!-- /.sets-category-grid -->
+
+          <!-- Protein upcharge note — retained -->
+          <p class="sets-upcharge reveal" style="font-size:var(--text-xs);color:var(--smoke);margin-bottom:1.5rem;letter-spacing:0.03em;">
             Protein upcharges: +$1 veggies/tofu &middot; +$2 chicken/beef/pork &middot; +$3 shrimp
           </p>
 
-          <!-- Primary CTA -->
-          <div class="sets-cta reveal">
-            <a href="https://order.toasttab.com/online/thai-i"
-               target="_blank" rel="noopener"
-               class="btn btn-primary">
-              Order Your Set Now
-            </a>
+          <!-- Dual CTA row -->
+          <div class="sets-cta-row reveal">
+            <a class="sets-cta-primary"
+               href="https://order.toasttab.com/online/thai-i"
+               target="_blank" rel="noopener">Order your set &rarr;</a>
+            <a class="sets-cta-secondary"
+               href="#menu">Explore the full menu &rarr;</a>
           </div>
 
         </div><!-- /.sets-inner -->
-      </div>
+      </div><!-- /.container -->
+
     </section>
+
 
 
     <!-- ══════════════════════════════════════════════════════
