@@ -369,9 +369,6 @@
 }
 
 /* ============================================================
-   QUICK N' EASY SETS
-   ============================================================ */
-/* ============================================================
    SETS SECTION
    ============================================================ */
 
@@ -386,14 +383,15 @@
   --sets-border-strong:   rgba(0, 0, 0, 0.18);
   --sets-border-stronger: rgba(0, 0, 0, 0.28);
   --sets-radius:          var(--radius-md);
-  --sets-dm-primary:      rgba(153, 60, 29, 0.105);
-  --sets-dm-secondary:    rgba(153, 60, 29, 0.072);
-  --sets-tint:            rgba(250, 244, 232, 0.78);
 
   /* Layout & atmosphere */
-  background: var(--sets-tint);
-  border-top: 0.5px solid var(--sets-border-strong);
-  border-bottom: 0.5px solid var(--sets-border);
+  /* Pre-computed target: rgba(250,244,232,0.78) over white = rgb(251,246,238).
+     Applied as solid to avoid compounding with warm-linen body background,
+     which would produce an overly prominent cream. This solid value reads as
+     near-white with a faint warm shift — the correct ambient register. */
+  background: rgb(251, 246, 238);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.18);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
   position: relative;
   overflow: hidden;
 }
@@ -414,13 +412,13 @@
 .sets-chapter-rule {
   flex: 1;
   height: 0.5px;
-  background: var(--sets-border-strong);
+  background: rgba(0, 0, 0, 0.18);
 }
 .sets-chapter-label {
   font-size: 9px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--sets-text-muted);
+  color: var(--smoke-light);
   font-family: var(--font-body);
   font-weight: 500;
 }
@@ -456,7 +454,7 @@
   font-size: 29px;
   font-weight: 500;
   line-height: 1.2;
-  color: var(--sets-text-primary);
+  color: #1a1a17;
   margin: 0 0 0.55rem;
 }
 .sets-title em {
@@ -466,7 +464,7 @@
 
 .sets-sub {
   font-size: 13.5px;
-  color: var(--sets-text-secondary);
+  color: var(--smoke);
   font-family: var(--font-body);
   margin: 0 0 1.1rem;
   line-height: 1.65;
@@ -479,15 +477,25 @@
   align-items: center;
   gap: 7px;
   margin-bottom: 1.5rem;
+  list-style: none;       /* defensive: block any inherited counter */
+  counter-reset: none;    /* prevent inherited counter cascade */
+  padding: 0;
 }
 .sets-strip-label {
   font-size: 11px;
-  color: var(--sets-text-muted);
+  color: var(--smoke-light);
   font-family: var(--font-body);
+  list-style: none;
+}
+.sets-strip-label::before,
+.sets-strip-label::after {
+  display: none !important; /* block any counter pseudo-element leak */
+  content: none !important;
 }
 .sets-strip-arrow {
   font-size: 11px;
-  color: var(--sets-border-stronger);
+  color: rgba(0, 0, 0, 0.35); /* visible but muted — not near-black */
+  line-height: 1;
 }
 
 /* Suppress old numbered step system */
@@ -501,108 +509,111 @@
    Positioned within .sets-section (position:relative, overflow:hidden)
    Content sits above marks in .sets-inner at z-index:1
    ─────────────────────────────────────────────────────────── */
+/* ── 10-Mark base ─────────────────────────────────────────── */
 .dm {
   position: absolute;
   pointer-events: none;
   z-index: 0;
+  /* Note: colors are explicit rgba values — not CSS vars —
+     to guarantee rendering regardless of inheritance context */
 }
 
 /* TOP CLUSTER (3) — entry framing */
-/* tl: corner diagonal dash — solid primary */
+/* tl: corner diagonal dash — solid */
 .dm-tl {
   top: 16px;
   left: 15px;
   width: 22px;
   height: 1.5px;
-  background: var(--sets-dm-primary);
+  background: rgba(153, 60, 29, 0.13);
   transform: rotate(-38deg);
 }
-/* tr: corner diamond — outline primary */
+/* tr: corner diamond — outline */
 .dm-tr {
   top: 22px;
   right: 18px;
   width: 9px;
   height: 9px;
-  border: 1px solid var(--sets-dm-primary);
+  border: 1px solid rgba(153, 60, 29, 0.13);
   background: transparent;
   transform: rotate(45deg);
 }
-/* ti: interior diamond — faded secondary, asymmetric center offset */
+/* ti: interior diamond — faded, asymmetric center offset */
 .dm-ti {
   top: 20px;
   left: 43%;
   width: 7px;
   height: 7px;
-  border: 0.75px solid var(--sets-dm-secondary);
+  border: 0.75px solid rgba(153, 60, 29, 0.08);
   background: transparent;
   transform: rotate(45deg);
 }
 
 /* SIDE FRAME (2) — lateral enclosure */
-/* ml: left vertical tick — solid primary */
+/* ml: left vertical tick */
 .dm-ml {
   top: 41%;
   left: 7px;
   width: 1.5px;
   height: 14px;
-  background: var(--sets-dm-primary);
+  background: rgba(153, 60, 29, 0.13);
 }
-/* mr: right vertical tick — solid primary, slightly higher + shorter */
+/* mr: right vertical tick — slightly higher, slightly shorter */
 .dm-mr {
   top: 37%;
   right: 7px;
   width: 1.5px;
   height: 11px;
-  background: var(--sets-dm-primary);
+  background: rgba(153, 60, 29, 0.13);
 }
 
 /* CONTENT ZONE (2) — directional micro-anchors */
-/* pg: pre-grid circle — threshold between step strip and card grid */
+/* pg: pre-grid circle — visual pause at step-to-card threshold */
 .dm-pg {
   top: 57%;
   right: 5px;
   width: 6px;
   height: 6px;
-  border: 0.75px solid var(--sets-dm-secondary);
+  border: 0.75px solid rgba(153, 60, 29, 0.08);
   background: transparent;
   border-radius: 50%;
 }
-/* ca: cta-adjacent angled dash — focal anchor at decision point */
+/* ca: CTA-adjacent angled dash — focal anchor near action zone */
 .dm-ca {
   top: 86%;
   right: 7px;
   width: 16px;
   height: 1px;
-  background: var(--sets-dm-secondary);
+  background: rgba(153, 60, 29, 0.08);
   transform: rotate(-22deg);
 }
 
 /* BOTTOM CLUSTER (3) — exit framing */
-/* bl: corner dot — solid primary */
+/* bl: corner dot — solid */
 .dm-bl {
   bottom: 22px;
   left: 17px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--sets-dm-primary);
+  background: rgba(153, 60, 29, 0.13);
 }
-/* br: corner diagonal dash — solid primary */
+/* br: corner diagonal dash — solid */
 .dm-br {
   bottom: 17px;
   right: 15px;
   width: 20px;
   height: 1.5px;
-  background: var(--sets-dm-primary);
+  background: rgba(153, 60, 29, 0.13);
   transform: rotate(38deg);
 }
-/* bi: interior horizontal dash — faded secondary, offset center-right */
+/* bi: interior horizontal dash — faded, offset center-right */
 .dm-bi {
   bottom: 25px;
   left: 53%;
   width: 14px;
   height: 1px;
-  background: var(--sets-dm-secondary);
+  background: rgba(153, 60, 29, 0.08);
 }
 
 /* ── Card Grid ────────────────────────────────────────────── */
@@ -617,15 +628,15 @@
 .sets-category-card {
   display: flex;
   flex-direction: column;
-  background: var(--sets-surface-2);
-  border: 0.5px solid var(--sets-border);
+  background: var(--off-white);
+  border: 0.5px solid rgba(0, 0, 0, 0.10);
   border-radius: 12px;
   overflow: hidden;
   text-decoration: none;
   transition: border-color 0.12s ease;
 }
 .sets-category-card:hover {
-  border-color: var(--sets-border-stronger);
+  border-color: rgba(0, 0, 0, 0.28);
 }
 
 /* ── Card Image Block — Option A: constrained top photo ───── */
@@ -666,21 +677,21 @@
 }
 .sets-category-thai {
   font-size: 12px;
-  color: var(--sets-text-muted);
+  color: var(--smoke-light);
   font-family: var(--font-display);
   font-style: italic;
   line-height: 1;
 }
 .sets-card-icon {
   font-size: 15px;
-  color: var(--sets-text-muted);
+  color: var(--smoke-light);
 }
 
 /* Layer 3: Category name */
 .sets-category-name {
   font-size: 13px;
   font-weight: 500;
-  color: var(--sets-text-primary);
+  color: #1a1a17;
   font-family: var(--font-body);
   margin: 0 0 2px;
 }
@@ -688,7 +699,7 @@
 /* Layer 4: Set name */
 .sets-category-setname {
   font-size: 11.5px;
-  color: var(--sets-text-secondary);
+  color: var(--smoke);
   font-family: var(--font-body);
   margin: 0 0 0.7rem;
 }
@@ -697,9 +708,9 @@
 .sets-category-pill {
   display: inline-block;
   font-size: 10px;
-  color: var(--sets-text-muted);
-  background: var(--sets-surface-1);
-  border: 0.5px solid var(--sets-border);
+  color: var(--smoke-light);
+  background: var(--white);
+  border: 0.5px solid rgba(0, 0, 0, 0.10);
   border-radius: 4px;
   padding: 2px 7px;
   font-family: var(--font-body);
@@ -709,7 +720,7 @@
 
 /* Layer 6 + 7: Hairline rule + price & arrow row */
 .sets-card-prow {
-  border-top: 0.5px solid var(--sets-border);
+  border-top: 0.5px solid rgba(0, 0, 0, 0.10);
   padding-top: 0.6rem;
   display: flex;
   align-items: center;
@@ -719,16 +730,26 @@
 .sets-category-price {
   font-size: 12.5px;
   font-weight: 500;
-  color: var(--sets-text-primary);
+  color: #1a1a17;
   font-family: var(--font-body);
 }
 .sets-card-arrow {
   font-size: 11px;
-  color: var(--sets-text-muted);
+  color: var(--smoke-light);
 }
 
 /* Suppress old verbose count text (replaced by pill) */
 .sets-category-count { display: none; }
+
+/* ── Protein Upcharge Note ─────────────────────────────────── */
+.sets-upcharge {
+  font-size: 11.5px;
+  color: var(--smoke-light);
+  font-family: var(--font-body);
+  margin-bottom: 1.25rem;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+}
 
 /* ── Dual CTA Architecture ────────────────────────────────── */
 /* Suppress old single-CTA wrapper */
@@ -744,30 +765,30 @@
 .sets-cta-primary {
   font-size: 13px;
   font-weight: 500;
-  color: var(--sets-text-primary);
-  border: 0.5px solid var(--sets-border-strong);
-  border-radius: var(--sets-radius);
+  color: #1a1a17;
+  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  border-radius: var(--radius-md);
   padding: 7px 16px;
   text-decoration: none;
   font-family: var(--font-body);
-  background: var(--sets-surface-2);
+  background: var(--off-white);
   display: inline-block;
   transition: background 0.12s ease;
 }
 .sets-cta-primary:hover {
-  background: var(--sets-surface-1);
+  background: var(--white);
 }
 
 /* Secondary — plain text link */
 .sets-cta-secondary {
   font-size: 13px;
-  color: var(--sets-text-secondary);
+  color: var(--smoke);
   text-decoration: none;
   font-family: var(--font-body);
   transition: color 0.12s ease;
 }
 .sets-cta-secondary:hover {
-  color: var(--sets-text-primary);
+  color: #1a1a17;
 }
 
 @media (max-width: 768px) {
