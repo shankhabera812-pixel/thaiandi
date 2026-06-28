@@ -270,31 +270,40 @@
       <div class="container">
         <div class="sets-inner">
 
-          <div class="sets-editorial reveal">
+          <!-- Chapter marker — full-width rule, sits above editorial column -->
+          <div class="sets-chapter" aria-hidden="true">
+            <div class="sets-chapter-rule"></div>
+            <span class="sets-chapter-label">Sets</span>
+            <div class="sets-chapter-rule"></div>
+          </div>
 
-            <!-- Chapter marker — section entry threshold -->
-            <div class="sets-chapter" aria-hidden="true">
-              <div class="sets-chapter-rule"></div>
-              <span class="sets-chapter-label">Sets</span>
-              <div class="sets-chapter-rule"></div>
-            </div>
+          <div class="sets-editorial reveal">
 
             <!-- Promotional badge — outlined pill, editorial signal -->
             <span class="sets-badge">New this season</span>
 
-            <!-- Heading: roman + italic mixed type -->
-            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy <em>Sets</em></h2>
+            <!-- Heading: roman cream + gold italic Sets + ✦ new-item mark -->
+            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy <em>Sets</em><span class="sets-new-mark" aria-hidden="true">✦</span></h2>
 
             <!-- Condensed subtitle — single warm invitation -->
             <p class="sets-sub">Complete meals, your way &mdash; starting from $12.95.</p>
 
-            <!-- Step flow strip — instructional whisper, not structure -->
+            <!-- Step flow strip — numbered 01/02/03 gold badge system -->
             <div class="sets-strip" aria-label="How it works">
-              <span class="sets-strip-label">Choose your main</span>
-              <span class="sets-strip-arrow" aria-hidden="true">&rarr;</span>
-              <span class="sets-strip-label">Add a starter</span>
-              <span class="sets-strip-arrow" aria-hidden="true">&rarr;</span>
-              <span class="sets-strip-label">Pick your protein</span>
+              <div class="step-item">
+                <div class="step-badge" aria-hidden="true">01</div>
+                <span class="step-text">Choose your main</span>
+              </div>
+              <div class="step-dot" aria-hidden="true"></div>
+              <div class="step-item">
+                <div class="step-badge" aria-hidden="true">02</div>
+                <span class="step-text">Add a starter</span>
+              </div>
+              <div class="step-dot" aria-hidden="true"></div>
+              <div class="step-item">
+                <div class="step-badge" aria-hidden="true">03</div>
+                <span class="step-text">Pick your protein</span>
+              </div>
             </div>
 
           </div><!-- /.sets-editorial -->

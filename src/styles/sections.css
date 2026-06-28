@@ -373,25 +373,14 @@
    ============================================================ */
 
 .sets-section {
-  /* Scoped tokens — Sets section only */
-  --sets-text-primary:    #1a1a17;
-  --sets-text-secondary:  var(--smoke);
-  --sets-text-muted:      var(--smoke-light);
-  --sets-surface-1:       var(--white);
-  --sets-surface-2:       var(--off-white);
-  --sets-border:          rgba(0, 0, 0, 0.10);
-  --sets-border-strong:   rgba(0, 0, 0, 0.18);
-  --sets-border-stronger: rgba(0, 0, 0, 0.28);
-  --sets-radius:          var(--radius-md);
-
-  /* Layout & atmosphere */
-  /* Pre-computed target: rgba(250,244,232,0.78) over white = rgb(251,246,238).
-     Applied as solid to avoid compounding with warm-linen body background,
-     which would produce an overly prominent cream. This solid value reads as
-     near-white with a faint warm shift — the correct ambient register. */
-  background: rgb(251, 246, 238);
-  border-top: 0.5px solid rgba(0, 0, 0, 0.18);
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.10);
+  /* Tone A — Spiced Walnut
+     Ground: rich warm brown #7C5C38
+     Accent: warm gold #F5C97A — badge, icons, pricing, step badges
+     Typography: cream-white #FAF0DC for headings, rgba(250,240,220,x) for body
+     Cards: deep walnut #5E421E — lifts visibly against the warm ground */
+  background: #7C5C38;
+  border-top:    0.5px solid rgba(255, 210, 140, 0.18);
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.30);
   position: relative;
   overflow: hidden;
 }
@@ -399,7 +388,7 @@
 .sets-inner {
   position: relative;
   z-index: 1;
-  padding-block: 2rem 2.25rem;
+  padding-block: 2.5rem 2.75rem;
 }
 
 /* ── Chapter Marker ───────────────────────────────────────── */
@@ -407,18 +396,18 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 .sets-chapter-rule {
   flex: 1;
   height: 0.5px;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(255, 210, 140, 0.22);
 }
 .sets-chapter-label {
   font-size: 9px;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.20em;
   text-transform: uppercase;
-  color: var(--smoke-light);
+  color: rgba(255, 210, 140, 0.45);
   font-family: var(--font-body);
   font-weight: 500;
 }
@@ -428,15 +417,15 @@
   display: inline-flex;
   align-items: center;
   font-size: 10px;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   font-family: var(--font-body);
-  color: #993C1D;
-  border: 0.5px solid #C4613A;
+  color: #F5C97A;
+  border: 0.5px solid rgba(245, 201, 122, 0.45);
   padding: 3px 11px;
   border-radius: 20px;
-  background: transparent;
-  margin-bottom: 0.9rem;
+  background: rgba(245, 201, 122, 0.10);
+  margin-bottom: 0.85rem;
 }
 
 /* ── Editorial column ─────────────────────────────────────── */
@@ -449,194 +438,232 @@
   display: none;
 }
 
+/* ── Heading — 50px, commanding at dark ground ────────────── */
 .sets-title {
   font-family: var(--font-display);
-  font-size: 29px;
+  font-size: 50px;
   font-weight: 500;
-  line-height: 1.2;
-  color: #1a1a17;
-  margin: 0 0 0.55rem;
+  line-height: 1.08;
+  color: #FAF0DC;
+  margin: 0 0 0.5rem;
+  /* Warm luminous glow — heading feels backlit by the gold accent */
+  text-shadow: 0 0 40px rgba(245, 201, 122, 0.22),
+               0 2px 16px rgba(245, 201, 122, 0.12);
 }
+/* Gold italic Sets — closes the accent system: badge → steps → icons → price → heading */
 .sets-title em {
   font-style: italic;
   font-weight: 500;
+  color: #F5C97A;
+  position: relative;
+  display: inline-block; /* required for ::after absolute positioning */
+}
+/* Gold partial underline — fades rightward, alive not static */
+.sets-title em::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(90deg, #F5C97A 0%, rgba(245, 201, 122, 0.15) 100%);
+  border-radius: 1px;
+}
+/* ✦ new-item mark — gold superscript, menu-fluent new-item signal */
+.sets-new-mark {
+  font-size: 14px;
+  color: #F5C97A;
+  font-family: var(--font-body);
+  font-weight: 400;
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 3px;
+  opacity: 0.75;
 }
 
+/* ── Subtitle ─────────────────────────────────────────────── */
 .sets-sub {
   font-size: 13.5px;
-  color: var(--smoke);
+  color: rgba(250, 240, 220, 0.65);
   font-family: var(--font-body);
-  margin: 0 0 1.1rem;
+  margin: 0 0 1.25rem;
   line-height: 1.65;
   max-width: 360px;
 }
 
-/* ── Step Flow Strip ──────────────────────────────────────── */
+/* ── Step Flow Strip — numbered gold badge system ─────────── */
 .sets-strip {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 1.5rem;
-  list-style: none;       /* defensive: block any inherited counter */
-  counter-reset: none;    /* prevent inherited counter cascade */
+  gap: 0;
+  margin-bottom: 2rem;
+  list-style: none;
   padding: 0;
 }
-.sets-strip-label {
-  font-size: 11px;
-  color: var(--smoke-light);
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.step-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
   font-family: var(--font-body);
-  list-style: none;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  flex-shrink: 0;
+  color: #F5C97A;
+  border: 1px solid rgba(245, 201, 122, 0.55);
+  background: rgba(245, 201, 122, 0.10);
 }
-.sets-strip-label::before,
-.sets-strip-label::after {
-  display: none !important; /* block any counter pseudo-element leak */
-  content: none !important;
+.step-text {
+  font-size: 11.5px;
+  font-family: var(--font-body);
+  color: rgba(250, 240, 220, 0.70);
 }
-.sets-strip-arrow {
-  font-size: 11px;
-  color: rgba(0, 0, 0, 0.35); /* visible but muted — not near-black */
-  line-height: 1;
+.step-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  margin: 0 14px;
+  flex-shrink: 0;
+  background: rgba(245, 201, 122, 0.35);
 }
 
-/* Suppress old numbered step system */
+/* Suppress old flat step strip system */
+.sets-strip-label  { display: none; }
+.sets-strip-arrow  { display: none; }
 .sets-steps { display: none; }
 .sets-step  { display: none; }
 .sets-step::before,
 .sets-step:not(:last-child)::after { display: none; }
 
 /* ══ 10-Mark 3-2-2-3 Atmospheric Composition ═════════════════
-   All marks: position:absolute, pointer-events:none, z-index:0
-   Positioned within .sets-section (position:relative, overflow:hidden)
-   Content sits above marks in .sets-inner at z-index:1
+   Gold-tinted marks — calibrated for dark warm ground.
+   Higher opacity than light-ground version for subliminal presence.
+   position:absolute, pointer-events:none, z-index:0
    ─────────────────────────────────────────────────────────── */
-/* ── 10-Mark base ─────────────────────────────────────────── */
 .dm {
   position: absolute;
   pointer-events: none;
   z-index: 0;
-  /* Note: colors are explicit rgba values — not CSS vars —
-     to guarantee rendering regardless of inheritance context */
 }
 
 /* TOP CLUSTER (3) — entry framing */
-/* tl: corner diagonal dash — solid */
 .dm-tl {
   top: 16px;
   left: 15px;
   width: 22px;
   height: 1.5px;
-  background: rgba(153, 60, 29, 0.13);
+  background: rgba(255, 200, 100, 0.22);
   transform: rotate(-38deg);
 }
-/* tr: corner diamond — outline */
 .dm-tr {
   top: 22px;
   right: 18px;
   width: 9px;
   height: 9px;
-  border: 1px solid rgba(153, 60, 29, 0.13);
+  border: 1px solid rgba(255, 200, 100, 0.22);
   background: transparent;
   transform: rotate(45deg);
 }
-/* ti: interior diamond — faded, asymmetric center offset */
 .dm-ti {
   top: 20px;
   left: 43%;
   width: 7px;
   height: 7px;
-  border: 0.75px solid rgba(153, 60, 29, 0.08);
+  border: 0.75px solid rgba(255, 200, 100, 0.14);
   background: transparent;
   transform: rotate(45deg);
 }
 
 /* SIDE FRAME (2) — lateral enclosure */
-/* ml: left vertical tick */
 .dm-ml {
   top: 41%;
   left: 7px;
   width: 1.5px;
   height: 14px;
-  background: rgba(153, 60, 29, 0.13);
+  background: rgba(255, 200, 100, 0.22);
 }
-/* mr: right vertical tick — slightly higher, slightly shorter */
 .dm-mr {
   top: 37%;
   right: 7px;
   width: 1.5px;
   height: 11px;
-  background: rgba(153, 60, 29, 0.13);
+  background: rgba(255, 200, 100, 0.22);
 }
 
 /* CONTENT ZONE (2) — directional micro-anchors */
-/* pg: pre-grid circle — visual pause at step-to-card threshold */
 .dm-pg {
   top: 57%;
   right: 5px;
   width: 6px;
   height: 6px;
-  border: 0.75px solid rgba(153, 60, 29, 0.08);
+  border: 0.75px solid rgba(255, 200, 100, 0.14);
   background: transparent;
   border-radius: 50%;
 }
-/* ca: CTA-adjacent angled dash — focal anchor near action zone */
 .dm-ca {
-  top: 86%;
+  top: 88%;
   right: 7px;
   width: 16px;
   height: 1px;
-  background: rgba(153, 60, 29, 0.08);
+  background: rgba(255, 200, 100, 0.14);
   transform: rotate(-22deg);
 }
 
 /* BOTTOM CLUSTER (3) — exit framing */
-/* bl: corner dot — solid */
 .dm-bl {
   bottom: 22px;
   left: 17px;
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(153, 60, 29, 0.13);
+  background: rgba(255, 200, 100, 0.22);
 }
-/* br: corner diagonal dash — solid */
 .dm-br {
   bottom: 17px;
   right: 15px;
   width: 20px;
   height: 1.5px;
-  background: rgba(153, 60, 29, 0.13);
+  background: rgba(255, 200, 100, 0.22);
   transform: rotate(38deg);
 }
-/* bi: interior horizontal dash — faded, offset center-right */
 .dm-bi {
   bottom: 25px;
   left: 53%;
   width: 14px;
   height: 1px;
-  background: rgba(153, 60, 29, 0.08);
+  background: rgba(255, 200, 100, 0.14);
 }
 
 /* ── Card Grid ────────────────────────────────────────────── */
 .sets-category-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 9px;
+  gap: 10px;
   margin-bottom: 1.5rem;
 }
 
-/* ── Card Container — light-surface editorial card ────────── */
+/* ── Card Container — deep walnut surface ─────────────────── */
 .sets-category-card {
   display: flex;
   flex-direction: column;
-  background: var(--off-white);
-  border: 0.5px solid rgba(0, 0, 0, 0.10);
-  border-radius: 12px;
+  background: #5E421E;
+  border: 0.5px solid rgba(255, 210, 140, 0.14);
+  border-radius: 13px;
   overflow: hidden;
   text-decoration: none;
-  transition: border-color 0.12s ease;
+  transition: border-color 0.15s ease, transform 0.15s ease;
 }
 .sets-category-card:hover {
-  border-color: rgba(0, 0, 0, 0.28);
+  border-color: rgba(245, 201, 122, 0.38);
+  transform: translateY(-1px);
 }
 
 /* ── Card Image Block — Option A: constrained top photo ───── */
@@ -661,11 +688,12 @@
 /* Suppress old full-bleed gradient overlay */
 .sets-category-overlay { display: none; }
 
-/* ── Card Body — 7-layer reading order ───────────────────── */
+/* ── Card Body ────────────────────────────────────────────── */
 .sets-card-body {
   padding: 1rem 1rem 0.9rem;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
 /* Layer 1 + 2: Thai script label + category icon */
@@ -673,25 +701,26 @@
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.55rem;
 }
 .sets-category-thai {
   font-size: 12px;
-  color: var(--smoke-light);
+  color: rgba(245, 201, 122, 0.65);
   font-family: var(--font-display);
   font-style: italic;
   line-height: 1;
 }
+/* Gold icon — unified accent touchpoint */
 .sets-card-icon {
   font-size: 15px;
-  color: var(--smoke-light);
+  color: #F5C97A;
 }
 
 /* Layer 3: Category name */
 .sets-category-name {
   font-size: 13px;
   font-weight: 500;
-  color: #1a1a17;
+  color: #FAF0DC;
   font-family: var(--font-body);
   margin: 0 0 2px;
 }
@@ -699,7 +728,7 @@
 /* Layer 4: Set name */
 .sets-category-setname {
   font-size: 11.5px;
-  color: var(--smoke);
+  color: rgba(250, 240, 220, 0.52);
   font-family: var(--font-body);
   margin: 0 0 0.7rem;
 }
@@ -708,9 +737,9 @@
 .sets-category-pill {
   display: inline-block;
   font-size: 10px;
-  color: var(--smoke-light);
-  background: var(--white);
-  border: 0.5px solid rgba(0, 0, 0, 0.10);
+  color: rgba(245, 201, 122, 0.60);
+  background: rgba(245, 201, 122, 0.08);
+  border: 0.5px solid rgba(245, 201, 122, 0.18);
   border-radius: 4px;
   padding: 2px 7px;
   font-family: var(--font-body);
@@ -720,22 +749,23 @@
 
 /* Layer 6 + 7: Hairline rule + price & arrow row */
 .sets-card-prow {
-  border-top: 0.5px solid rgba(0, 0, 0, 0.10);
+  border-top: 0.5px solid rgba(255, 210, 140, 0.14);
   padding-top: 0.6rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: auto;
 }
+/* Gold price — unified accent touchpoint */
 .sets-category-price {
   font-size: 12.5px;
   font-weight: 500;
-  color: #1a1a17;
+  color: #F5C97A;
   font-family: var(--font-body);
 }
 .sets-card-arrow {
   font-size: 11px;
-  color: var(--smoke-light);
+  color: rgba(245, 201, 122, 0.45);
 }
 
 /* Suppress old verbose count text (replaced by pill) */
@@ -744,9 +774,9 @@
 /* ── Protein Upcharge Note ─────────────────────────────────── */
 .sets-upcharge {
   font-size: 11.5px;
-  color: var(--smoke-light);
+  color: rgba(250, 240, 220, 0.38);
   font-family: var(--font-body);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
@@ -761,34 +791,39 @@
   gap: 1.25rem;
 }
 
-/* Primary — ghost/outlined button */
+/* Primary — gold-tinted outlined button with inset highlight */
 .sets-cta-primary {
   font-size: 13px;
   font-weight: 500;
-  color: #1a1a17;
-  border: 0.5px solid rgba(0, 0, 0, 0.18);
+  color: #FAF0DC;
+  border: 0.5px solid rgba(245, 201, 122, 0.45);
   border-radius: var(--radius-md);
-  padding: 7px 16px;
+  padding: 8px 18px;
   text-decoration: none;
   font-family: var(--font-body);
-  background: var(--off-white);
+  background: rgba(245, 201, 122, 0.10);
   display: inline-block;
-  transition: background 0.12s ease;
+  /* Inset highlight — warm shimmer at top edge */
+  box-shadow: inset 0 1px 0 rgba(245, 201, 122, 0.22),
+              0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s ease, box-shadow 0.15s ease;
 }
 .sets-cta-primary:hover {
-  background: var(--white);
+  background: rgba(245, 201, 122, 0.18);
+  box-shadow: inset 0 1px 0 rgba(245, 201, 122, 0.32),
+              0 2px 6px rgba(0, 0, 0, 0.30);
 }
 
-/* Secondary — plain text link */
+/* Secondary — warm gold text link */
 .sets-cta-secondary {
   font-size: 13px;
-  color: var(--smoke);
+  color: rgba(245, 201, 122, 0.60);
   text-decoration: none;
   font-family: var(--font-body);
-  transition: color 0.12s ease;
+  transition: color 0.15s ease;
 }
 .sets-cta-secondary:hover {
-  color: #1a1a17;
+  color: rgba(245, 201, 122, 0.90);
 }
 
 @media (max-width: 768px) {
@@ -797,13 +832,15 @@
     grid-template-columns: 1fr;
     gap: 12px;
   }
-  /* Step strip: allow wrapping at narrow widths */
+  /* Step strip: wrap on narrow, tighten dot margin */
   .sets-strip {
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 8px 0;
   }
-  /* Mark system: suppress on mobile — atmospheric tint +
-     hairline borders carry the insert quality at small sizes */
+  .step-dot {
+    margin: 0 8px;
+  }
+  /* Mark system: suppress on mobile */
   .dm { display: none; }
   /* CTA row: stack vertically */
   .sets-cta-row {
