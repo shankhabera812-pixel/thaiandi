@@ -90,7 +90,7 @@
 
       <!-- Desktop navigation -->
       <nav class="header-nav" role="navigation" aria-label="Primary">
-        <a href="#sets">Sets</a>
+        <a href="#sets" class="nav-link--new">Sets<span class="nav-new-mark" aria-hidden="true">✦</span></a>
         <a href="#story">Our Story</a>
         <a href="#menu">Menu</a>
         <a href="#featured">Dishes</a>
@@ -125,7 +125,7 @@
 
   <!-- Mobile navigation overlay -->
   <nav class="mobile-nav" id="mobile-nav" role="navigation" aria-label="Mobile">
-    <a href="#sets">Sets</a>
+    <a href="#sets" class="nav-link--new">Sets<span class="nav-new-mark" aria-hidden="true">✦</span></a>
     <a href="#story">Our Story</a>
     <a href="#menu">Menu</a>
     <a href="#featured">Dishes</a>
@@ -176,8 +176,8 @@
         <!-- Slide 3: Full dining room — space, light, invitation -->
         <div class="hero-slide" role="group" aria-label="Slide 3 of 3: Thai and I full dining room">
           <img class="hero-slide-img"
-               src="assets/images/NEW/interior-dining-wide.webp"
-               alt="The full dining room at Thai &amp; I — warm pendant lighting, green booths and natural light"
+               src="assets/images/NEW/interior-booth-seating-2.jpg"
+               alt="The warm, inviting dining room at Thai &amp; I featuring green leather booths and authentic decor"
                loading="lazy"
                width="1920" height="1080">
           <div class="hero-slide-overlay hero-slide--lighter"></div>
@@ -189,7 +189,7 @@
       <div class="hero-content">
         <!-- TODO: Confirm Thai script with owner -->
         <span class="hero-lang" aria-hidden="true">ไทยแอนด์ไอ</span>
-        <h1 class="hero-headline">Authentic Thai,<br>Fresh Every Day.</h1>
+        <h1 class="hero-headline"><span class="hero-line-1">Authentic <em>Thai</em>,</span><br><span class="hero-line-2">Fresh Every Day.</span></h1>
         <p class="hero-sub">274 South St &nbsp;·&nbsp; Shrewsbury, MA</p>
 
         <div class="hero-ctas order-platforms" role="group" aria-label="Online ordering options">
@@ -282,8 +282,8 @@
             <!-- Promotional badge — outlined pill, editorial signal -->
             <span class="sets-badge">New this season</span>
 
-            <!-- Heading: roman cream + gold italic Sets + ✦ new-item mark -->
-            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy <em>Sets</em><span class="sets-new-mark" aria-hidden="true">✦</span></h2>
+            <!-- Heading: roman cream + gold italic Sets — gold underline on em -->
+            <h2 class="sets-title" id="sets-heading">Quick n&rsquo; Easy <em>Sets</em></h2>
 
             <!-- Condensed subtitle — single warm invitation -->
             <p class="sets-sub">Complete meals, your way &mdash; starting from $12.95.</p>
@@ -469,12 +469,19 @@
             <a href="#menu" class="btn btn-primary reveal reveal-delay-4" style="display:inline-flex;">Explore Our Menu</a>
           </div>
 
-          <!-- Right: Images -->
+          <!-- Right: Three-image composition — owner / food / dessert -->
           <div class="story-images reveal reveal-delay-2">
+            <!-- Anchor: owner portrait — the people behind the food -->
             <img class="story-img-rect"
                  src="assets/images/ownerwithhermother.jpg"
                  alt="Fawn Weydt and her mother Pat Rakkun, founders of Thai &amp; I"
                  loading="lazy">
+            <!-- Primary food: beef red curry with brown rice —- the kitchen's heart -->
+            <img class="story-img-food"
+                 src="assets/images/NEW/beef-red-curry-brown-rice.jpg"
+                 alt="Beef red curry with brown rice — a Thai &amp; I kitchen signature"
+                 loading="lazy">
+            <!-- Secondary dessert accent: mango sticky rice with Thai iced tea -->
             <img class="story-img-oval"
                  src="assets/images/NEW/mango-sticky-rice-iced-tea.jpg"
                  alt="Mango sticky rice with Thai iced tea — a Thai &amp; I dessert favourite"
@@ -523,8 +530,8 @@
                data-menu-tab="curries"
                aria-label="Jump to Curries menu">
               <div class="category-card-oval">
-                <img src="assets/images/NEW/mango-curry-chicken-shrimp.jpg"
-                     alt="Mango curry with chicken and shrimp over white rice"
+                <img src="assets/images/curryphoto.jpg"
+                     alt="Thai curry in rich coconut milk sauce"
                      loading="lazy">
               </div>
               <div class="category-card-text">
@@ -635,7 +642,7 @@
           <div class="section-header">
             <span class="section-eyebrow reveal">From the Kitchen</span>
             <h2 class="section-title reveal reveal-delay-1" id="featured-heading">
-              Staff Favourites
+              Staff <em>Favourites</em>
             </h2>
             <p class="section-sub reveal reveal-delay-2">
               Dishes we've been making for years — the ones guests keep ordering by name.
@@ -650,13 +657,13 @@
             <!-- Card 1: Pad Thai -->
             <article class="dish-card reveal reveal-delay-1">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Pad Thai -->
                 <img src="assets/images/padthai3.jpg"
                      alt="Pad Thai — stir-fried rice noodles with egg, bean sprouts and ground peanuts"
                      loading="lazy">
               </div>
               <div class="dish-card-body">
                 <h3 class="dish-card-name">Pad Thai</h3>
+                <span class="dish-badge--bestseller" aria-label="Best Seller">Best Seller</span>
                 <p class="dish-card-desc">Rice noodles stir-fried with egg, scallions, bean sprouts, and ground peanuts. Choice of chicken, shrimp, or both.</p>
                 <div class="dish-card-footer">
                   <span class="dish-card-price">From $12.95</span>
@@ -665,53 +672,51 @@
               </div>
             </article>
 
-            <!-- Card 2: Rama Duck -->
+            <!-- Card 2: Pho -->
             <article class="dish-card reveal reveal-delay-2">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Rama Duck -->
-                <img src="assets/images/ramaduck.jpg"
-                     alt="Rama Duck — crispy roasted duck in red curry peanut sauce"
+                <img src="assets/images/NEW/pho.jpg"
+                     alt="Pho — fragrant bone broth noodle soup with choice of chicken, beef, or pork"
                      loading="lazy">
               </div>
               <div class="dish-card-body">
-                <h3 class="dish-card-name">Rama Duck</h3>
-                <p class="dish-card-desc">Crispy roasted duck simmered in red curry peanut sauce with carrots, red peppers, and broccoli. Served with rice.</p>
+                <h3 class="dish-card-name">Pho</h3>
+                <span class="dish-badge--bestseller" aria-label="Best Seller">Best Seller</span>
+                <p class="dish-card-desc">Rice noodles in a rich, slow-simmered bone broth with your choice of chicken, beef, or pork — served in a generous bowl with mushrooms, carrots, and peas.</p>
                 <div class="dish-card-footer">
-                  <span class="dish-card-price">From $16.95</span>
+                  <span class="dish-card-price">From $14.95</span>
                   <a href="https://order.toasttab.com/online/thai-i" target="_blank" rel="noopener" class="dish-card-order">Order Now</a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 3: Panang Curry -->
+            <!-- Card 3: Mango Curry -->
             <article class="dish-card reveal reveal-delay-3">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Panang Curry -->
-                <img src="assets/images/panangcurry2.jpg"
-                     alt="Panang Curry — rich coconut curry with carrots, broccoli and lime leaves"
+                <img src="assets/images/NEW/mango-curry-chicken-shrimp.jpg"
+                     alt="Mango Curry — chicken and shrimp in golden coconut curry with fresh mango chunks"
                      loading="lazy">
               </div>
               <div class="dish-card-body">
-                <h3 class="dish-card-name">Panang Curry</h3>
-                <p class="dish-card-desc">Rich, aromatic coconut curry with carrots, broccoli, green peppers, and lime leaves. Your choice of protein.</p>
+                <h3 class="dish-card-name">Mango Curry</h3>
+                <p class="dish-card-desc">Tender chicken and shrimp with fresh mango chunks in a golden coconut curry — with onions, carrots, tomatoes, and bell peppers. Sweet heat in every bite.</p>
                 <div class="dish-card-footer">
-                  <span class="dish-card-price">From $12.95</span>
+                  <span class="dish-card-price">From $14.95</span>
                   <a href="https://order.toasttab.com/online/thai-i" target="_blank" rel="noopener" class="dish-card-order">Order Now</a>
                 </div>
               </div>
             </article>
 
-            <!-- Card 4: Papaya Salad -->
+            <!-- Card 4: Larb Gai -->
             <article class="dish-card reveal reveal-delay-4">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Papaya Salad -->
-                <img src="assets/images/papayasalad1.jpg"
-                     alt="Papaya salad (Som Tum) with shredded papaya, chili, and peanuts on banana leaf"
+                <img src="assets/images/NEW/chicken-salad-larb-gai.jpg"
+                     alt="Larb Gai — Thai ground chicken salad with lemongrass, roasted rice grain and spicy lime dressing"
                      loading="lazy">
               </div>
               <div class="dish-card-body">
-                <h3 class="dish-card-name">Papaya Salad</h3>
-                <p class="dish-card-desc">Shredded green papaya with string beans, tomato, and chili in a bright spicy lime dressing, topped with peanuts. Served with sticky rice.</p>
+                <h3 class="dish-card-name">Larb Gai</h3>
+                <p class="dish-card-desc">Ground chicken or sliced beef tossed with cucumber, lemongrass, roasted rice grain, scallions, and cilantro in a bold spicy lime dressing.</p>
                 <div class="dish-card-footer">
                   <span class="dish-card-price">$14.95</span>
                   <a href="https://order.toasttab.com/online/thai-i" target="_blank" rel="noopener" class="dish-card-order">Order Now</a>
@@ -722,7 +727,6 @@
             <!-- Card 5: Basil Combo -->
             <article class="dish-card reveal reveal-delay-5">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Basil Combination -->
                 <img src="assets/images/basilcombo.jpg"
                      alt="Basil Combination — stir-fried with Thai basil, bell peppers and chili sauce"
                      loading="lazy">
@@ -737,17 +741,16 @@
               </div>
             </article>
 
-            <!-- Card 6: Thai Special Fried Rice -->
+            <!-- Card 6: Thai & I Special -->
             <article class="dish-card reveal reveal-delay-6">
               <div class="dish-card-img">
-                <!-- TODO: Replace with Thai & I dish photo — Thai Special Fried Rice -->
-                <img src="assets/images/thaispecialfriedrice.jpg"
-                     alt="Thai Special Fried Rice — wok-fried with shrimp, chicken, egg and scallions"
+                <img src="assets/images/NEW/thaiandispecial.jpg"
+                     alt="Thai &amp; I Special — stir-fried basil with ground meat, chilies and Thai-style fried egg"
                      loading="lazy">
               </div>
               <div class="dish-card-body">
-                <h3 class="dish-card-name">Thai Special Fried Rice</h3>
-                <p class="dish-card-desc">Classic Thai wok-fried rice with shrimp, chicken, egg, peas, onion, and scallions. Simple, satisfying, and house-made.</p>
+                <h3 class="dish-card-name">Thai &amp; I Special</h3>
+                <p class="dish-card-desc">Ground beef, chicken, or pork stir-fried in spicy basil sauce with fresh chilies, string beans, bell peppers, and Thai basil leaves — served with steamed rice and a Thai-style fried egg.</p>
                 <div class="dish-card-footer">
                   <span class="dish-card-price">From $12.95</span>
                   <a href="https://order.toasttab.com/online/thai-i" target="_blank" rel="noopener" class="dish-card-order">Order Now</a>

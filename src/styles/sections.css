@@ -86,6 +86,26 @@
   transform: scaleX(1);
 }
 
+/* Sets nav link — gold text + ✦ mark: signals new section in nav context */
+.header-nav a.nav-link--new {
+  color: #F5C97A;
+}
+.header-nav a.nav-link--new:hover,
+.header-nav a.nav-link--new.active {
+  color: #FAF0DC;
+}
+.nav-new-mark {
+  font-size: 7px;
+  vertical-align: super;
+  margin-left: 2px;
+  color: #F5C97A;
+  opacity: 0.82;
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 0;
+  text-transform: none; /* prevent uppercase cascade from nav */
+}
+
 /* Header actions */
 .header-actions {
   display: flex;
@@ -291,6 +311,22 @@
   line-height: var(--leading-tight);
   letter-spacing: -0.02em;
   margin-bottom: 1rem;
+  /* Warm atmospheric glow — headline feels backlit by the photography */
+  text-shadow: 0 2px 40px rgba(210, 160, 60, 0.12),
+               0 4px 80px rgba(210, 160, 60, 0.06);
+}
+/* Line 1 — narrative, lighter register: "Authentic Thai," */
+.hero-line-1 {
+  font-weight: 400;
+}
+/* Line 2 — declarative, full weight: "Fresh Every Day." */
+.hero-line-2 {
+  font-weight: 600;
+}
+/* Italic on "Thai" — shifts the word from modifier to proper identity */
+.hero-headline em {
+  font-style: italic;
+  font-weight: 400; /* inherits line-1 weight */
 }
 
 .hero-sub {
@@ -469,17 +505,7 @@
   background: linear-gradient(90deg, #F5C97A 0%, rgba(245, 201, 122, 0.15) 100%);
   border-radius: 1px;
 }
-/* ✦ new-item mark — gold superscript, menu-fluent new-item signal */
-.sets-new-mark {
-  font-size: 14px;
-  color: #F5C97A;
-  font-family: var(--font-body);
-  font-weight: 400;
-  vertical-align: super;
-  line-height: 0;
-  margin-left: 3px;
-  opacity: 0.75;
-}
+
 
 /* ── Subtitle ─────────────────────────────────────────────── */
 .sets-sub {
@@ -908,17 +934,18 @@
 .story-meta-icon svg { width: 18px; height: 18px; }
 .story-meta-item strong { display: block; }
 
-/* Right — dual image */
+/* Right — 3-image composition */
 .story-images {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding: 2rem 0;
+  align-items: center;
+  padding: 2.5rem 0;
+  min-height: 480px;
 }
 
 .story-img-rect {
-  width: 72%;
+  width: 65%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: var(--radius-lg);
@@ -929,10 +956,10 @@
 
 .story-img-oval {
   position: absolute;
-  bottom: 0.5rem;
-  right: 0.25rem;
-  width: 38%;
-  aspect-ratio: 3 / 4;
+  top: 1rem;
+  left: 2%;
+  width: 32%;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-md);
@@ -940,17 +967,57 @@
   border: 4px solid var(--warm-linen);
 }
 
+.story-img-food {
+  position: absolute;
+  bottom: -2rem;
+  right: -5%;
+  width: 42%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 4;
+  border: 6px solid var(--warm-linen);
+}
+
 @media (max-width: 900px) {
   .story-inner {
     grid-template-columns: 1fr;
     gap: var(--gap-xl);
   }
-  .story-images { min-height: 340px; }
-  .story-img-rect { width: 65%; }
-  .story-img-oval { width: 34%; }
+  .story-images { 
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    padding: 1rem 0; 
+    min-height: auto;
+  }
+  .story-img-rect { 
+    position: static;
+    grid-column: 1 / -1; 
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 500px;
+    object-position: top center;
+  }
+  .story-img-oval, .story-img-food { 
+    position: static;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-width: 4px;
+    margin: 0;
+  }
 }
 @media (max-width: 480px) {
-  .story-images { min-height: 280px; }
+  .story-images { 
+    gap: 1rem; 
+  }
+  .story-img-rect {
+    max-height: 380px;
+  }
+  .story-img-oval, .story-img-food {
+    border-width: 3px;
+  }
 }
 
 /* ============================================================
@@ -1356,6 +1423,55 @@
    ============================================================ */
 .featured-section {
   background: var(--warm-linen-dark);
+}
+
+/* Premium Header Enhancements */
+#featured-heading {
+  position: relative;
+  display: inline-block;
+}
+
+#featured-heading em {
+  font-style: italic;
+  color: #B26A20; /* Darker, atmospheric copper/gold */
+  text-shadow: 0 0 16px rgba(178, 106, 32, 0.25), 
+               0 2px 4px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+#featured-heading em::after {
+  content: "";
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(178, 106, 32, 0.7), transparent);
+  opacity: 0.35;
+}
+
+.featured-section .section-sub {
+  letter-spacing: 0.015em;
+  color: var(--forest-charcoal);
+  opacity: 0.85;
+}
+
+/* Best Seller Badge */
+.dish-badge--bestseller {
+  display: inline-block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #a35502;
+  background: rgba(163, 85, 2, 0.06);
+  border: 1px solid rgba(163, 85, 2, 0.15);
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+  margin-bottom: 0.75rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(245, 201, 122, 0.3); /* Subtle, premium gold glow */
 }
 
 .featured-grid {
@@ -1836,10 +1952,16 @@
   background-color: var(--forest-charcoal);
   background-image:
     linear-gradient(rgba(18, 32, 18, 0.58), rgba(18, 32, 18, 0.58)),
-    url('../../assets/images/NEW/interior-booth-seating-2.jpg');
+    url('../../assets/images/NEW/thaiandioutside.png');
   background-size: cover;
-  background-position: center;
+  background-position: center 65%; /* Art-directed crop: slightly lower to center the building and crop out parking lot */
   background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    background-position: center 75%; /* Adjust focal point on mobile for taller aspect ratio */
+  }
 }
 /* Ensure all text inside the contact section reads on dark background */
 .contact-section .section-eyebrow,
@@ -1847,6 +1969,7 @@
 .contact-section .contact-card-label,
 .contact-section .contact-card-value,
 .contact-section .contact-hours-row,
+.contact-section .contact-hours-row strong,
 .contact-section a,
 .contact-section p {
   color: rgba(255, 255, 255, 0.92);

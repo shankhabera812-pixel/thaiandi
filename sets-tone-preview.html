@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sets Section — Tone Preview v2 · Thai & I</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; background: #F0EBE2; }
+
+    /* ─── REVIEWER CHROME ─────────────────────────────────── */
+    .page-header {
+      background: #12100d;
+      color: #f5ead8;
+      padding: 24px 40px;
+      display: flex;
+      align-items: baseline;
+      gap: 18px;
+    }
+    .page-header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 500;
+    }
+    .page-header p {
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(245,234,216,0.40);
+    }
+
+    /* White page — simulates hero exit / story entry */
+    .page-ctx {
+      background: #FFFFFF;
+      padding: 44px 0 0;
+      border-bottom: none;
+    }
+    .page-ctx-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 32px 36px;
+    }
+    .page-ctx-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.20);
+      margin-bottom: 6px;
+    }
+    .page-ctx-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      color: rgba(0,0,0,0.12);
+      font-style: italic;
+    }
+
+    /* Tone label strip */
+    .tone-strip {
+      background: #F0EBE2;
+      padding: 36px 40px 18px;
+      border-top: 2px dashed rgba(0,0,0,0.07);
+    }
+    .tone-strip-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 16px;
+    }
+    .tone-swatch {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      border: 0.5px solid rgba(0,0,0,0.12);
+      flex-shrink: 0;
+    }
+    .tone-number {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.32);
+      margin-bottom: 3px;
+    }
+    .tone-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 21px;
+      font-weight: 500;
+      color: #1a1a17;
+      line-height: 1;
+    }
+    .tone-hex {
+      font-size: 11px;
+      color: rgba(0,0,0,0.36);
+      font-family: 'DM Sans', sans-serif;
+      margin-left: 5px;
+    }
+
+    /* White page below */
+    .page-ctx-bottom {
+      background: #FFFFFF;
+      padding: 36px 0 44px;
+      border-top: none;
+    }
+
+    /* ─── SETS SECTION SHELL ──────────────────────────────── */
+    .sets-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .sets-inner {
+      position: relative;
+      z-index: 1;
+      padding-block: 2.5rem 2.75rem;
+    }
+
+    /* ─── MARKS (opacity calibrated for darker grounds) ──── */
+    .dm {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── CHAPTER MARKER ─────────────────────────────────── */
+    .sets-chapter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 1.25rem;
+    }
+    .sets-chapter-rule {
+      flex: 1;
+      height: 0.5px;
+    }
+    .sets-chapter-label {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+    }
+
+    /* ─── BADGE ──────────────────────────────────────────── */
+    .sets-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-family: 'DM Sans', sans-serif;
+      padding: 3px 11px;
+      border-radius: 20px;
+      margin-bottom: 0.8rem;
+    }
+
+    /* ─── HEADING — 50px ─────────────────────────────────── */
+    .sets-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 50px;
+      font-weight: 500;
+      line-height: 1.08;
+      margin: 0 0 0.5rem;
+    }
+    .sets-title em {
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    /* ─── SUBTITLE ───────────────────────────────────────── */
+    .sets-sub {
+      font-size: 13.5px;
+      font-family: 'DM Sans', sans-serif;
+      margin: 0 0 1.25rem;
+      line-height: 1.65;
+      max-width: 380px;
+    }
+
+    /* ─── STEP STRIP — numbered badges ──────────────────── */
+    .sets-strip {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 2rem;
+      list-style: none;
+    }
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .step-badge {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      flex-shrink: 0;
+    }
+    .step-text {
+      font-size: 11.5px;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .step-dot {
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      margin: 0 14px;
+      flex-shrink: 0;
+    }
+
+    /* ─── CARD GRID ──────────────────────────────────────── */
+    .sets-category-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ─── CARD ───────────────────────────────────────────── */
+    .sets-category-card {
+      display: flex;
+      flex-direction: column;
+      border-radius: 13px;
+      overflow: hidden;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .sets-card-img-wrap {
+      width: 100%;
+      height: 140px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .sets-category-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+    .img-fallback {
+      width: 100%;
+      height: 140px;
+      display: flex;
+      align-items: flex-end;
+      padding: 12px 14px;
+    }
+    .img-fallback span {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-style: italic;
+      color: rgba(255,255,255,0.65);
+    }
+    .img-combinations { background: linear-gradient(150deg, #C5956A 0%, #7A4E2C 100%); }
+    .img-noodles      { background: linear-gradient(150deg, #C4A464 0%, #7D5E2A 100%); }
+    .img-curries      { background: linear-gradient(150deg, #B8784A 0%, #6B3E1C 100%); }
+
+    .sets-card-body {
+      padding: 1rem 1rem 0.9rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .sets-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .sets-category-thai {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 12px;
+      line-height: 1;
+    }
+    .sets-card-icon { font-size: 15px; }
+    .sets-category-name {
+      font-size: 13px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      margin: 0 0 2px;
+    }
+    .sets-category-setname {
+      font-size: 11.5px;
+      font-family: 'DM Sans', sans-serif;
+      margin: 0 0 0.7rem;
+    }
+    .sets-category-pill {
+      display: inline-block;
+      font-size: 10px;
+      border-radius: 4px;
+      padding: 2px 7px;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 0.8rem;
+      align-self: flex-start;
+    }
+    .sets-card-prow {
+      padding-top: 0.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
+    .sets-category-price {
+      font-size: 12.5px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .sets-card-arrow { font-size: 11px; }
+
+    /* ─── UPCHARGE ───────────────────────────────────────── */
+    .sets-upcharge {
+      font-size: 11.5px;
+      font-family: 'DM Sans', sans-serif;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+      letter-spacing: 0.02em;
+    }
+
+    /* ─── CTA ROW ────────────────────────────────────────── */
+    .sets-cta-row {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .sets-cta-primary {
+      font-size: 13px;
+      font-weight: 500;
+      border-radius: 8px;
+      padding: 8px 18px;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      display: inline-block;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.18s ease;
+    }
+    /* Subtle shimmer line across top of CTA button */
+    .sets-cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      border-radius: 8px 8px 0 0;
+    }
+    .sets-cta-secondary {
+      font-size: 13px;
+      text-decoration: none;
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: gap 0.15s ease;
+    }
+    .sets-cta-secondary:hover { gap: 9px; }
+
+    /* ─── MARK CLASSES (shared geometry) ─────────────────── */
+    .dm-tl { top:16px; left:15px; width:22px; height:1.5px; transform:rotate(-38deg); }
+    .dm-tr { top:22px; right:18px; width:9px; height:9px; background:transparent; transform:rotate(45deg); }
+    .dm-ti { top:20px; left:43%; width:7px; height:7px; background:transparent; transform:rotate(45deg); }
+    .dm-ml { top:41%; left:7px; width:1.5px; height:14px; }
+    .dm-mr { top:37%; right:7px; width:1.5px; height:11px; }
+    .dm-pg { top:58%; right:5px; width:6px; height:6px; background:transparent; border-radius:50%; }
+    .dm-ca { top:88%; right:7px; width:16px; height:1px; transform:rotate(-22deg); }
+    .dm-bl { bottom:22px; left:17px; width:6px; height:6px; border-radius:50%; }
+    .dm-br { bottom:17px; right:15px; width:20px; height:1.5px; transform:rotate(38deg); }
+    .dm-bi { bottom:25px; left:53%; width:14px; height:1px; }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Thai & I — Sets Section</h1>
+  <p>Darker Tone Exploration · v2 · Three Directions</p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TONE A — SPICED WALNUT  #7C5C38
+     Warm brown-amber, mocha character, deeply food-warm
+═══════════════════════════════════════════════════════════ -->
+
+<div class="page-ctx">
+  <div class="page-ctx-inner">
+    <p class="page-ctx-label">Above — white page, hero exit</p>
+    <p class="page-ctx-text">Hero content — white ground</p>
+  </div>
+</div>
+
+<div class="tone-strip">
+  <div class="tone-strip-inner">
+    <div class="tone-swatch" style="background:#7C5C38;"></div>
+    <div>
+      <div class="tone-number">Tone A</div>
+      <div class="tone-title">Spiced Walnut <span class="tone-hex">#7C5C38</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="sets-section" style="
+  background: #7C5C38;
+  border-top: 0.5px solid rgba(255,210,140,0.18);
+  border-bottom: 0.5px solid rgba(0,0,0,0.30);
+">
+  <!-- Marks — warm gold tint, higher opacity on dark ground -->
+  <span class="dm dm-tl" aria-hidden="true" style="background:rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-tr" aria-hidden="true" style="border:1px solid rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-ti" aria-hidden="true" style="border:0.75px solid rgba(255,200,100,0.14);"></span>
+  <span class="dm dm-ml" aria-hidden="true" style="background:rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-mr" aria-hidden="true" style="background:rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-pg" aria-hidden="true" style="border:0.75px solid rgba(255,200,100,0.14);"></span>
+  <span class="dm dm-ca" aria-hidden="true" style="background:rgba(255,200,100,0.14);"></span>
+  <span class="dm dm-bl" aria-hidden="true" style="background:rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-br" aria-hidden="true" style="background:rgba(255,200,100,0.22);"></span>
+  <span class="dm dm-bi" aria-hidden="true" style="background:rgba(255,200,100,0.14);"></span>
+
+  <div class="container">
+    <div class="sets-inner">
+
+      <div class="sets-editorial">
+        <div class="sets-chapter" aria-hidden="true">
+          <div class="sets-chapter-rule" style="background:rgba(255,210,140,0.22);"></div>
+          <span class="sets-chapter-label" style="color:rgba(255,210,140,0.45);">Sets</span>
+          <div class="sets-chapter-rule" style="background:rgba(255,210,140,0.22);"></div>
+        </div>
+
+        <!-- Badge — warm gold -->
+        <span class="sets-badge" style="color:#F5C97A; border:0.5px solid rgba(245,201,122,0.45); background:rgba(245,201,122,0.08);">New this season</span>
+
+        <!-- Heading — cream white -->
+        <h2 class="sets-title" style="color:#FAF0DC;">Quick n&rsquo; Easy <em>Sets</em></h2>
+
+        <!-- Subtitle — warm off-white -->
+        <p class="sets-sub" style="color:rgba(250,240,220,0.65);">Complete meals, your way &mdash; starting from $12.95.</p>
+
+        <!-- Step strip — numbered gold badges -->
+        <div class="sets-strip">
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.55); color:#F5C97A; background:rgba(245,201,122,0.10);">01</div>
+            <span class="step-text" style="color:rgba(250,240,220,0.70);">Choose your main</span>
+          </div>
+          <div class="step-dot" style="background:rgba(245,201,122,0.35);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.55); color:#F5C97A; background:rgba(245,201,122,0.10);">02</div>
+            <span class="step-text" style="color:rgba(250,240,220,0.70);">Add a starter</span>
+          </div>
+          <div class="step-dot" style="background:rgba(245,201,122,0.35);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.55); color:#F5C97A; background:rgba(245,201,122,0.10);">03</div>
+            <span class="step-text" style="color:rgba(250,240,220,0.70);">Pick your protein</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cards -->
+      <div class="sets-category-grid">
+
+        <a class="sets-category-card" href="#" style="background:#5E421E; border:0.5px solid rgba(255,210,140,0.14);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-thai-and-i-special.jpg" alt="Combinations"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-combinations" style="display:none;"><span>Thai &amp; I Special Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.65);">&#3612;&#3633;&#3604;&#3619;&#3623;&#3617;</span>
+              <i class="ti ti-flame sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FAF0DC;">Combinations</p>
+            <p class="sets-category-setname" style="color:rgba(250,240,220,0.52);">Thai &amp; I Special Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.60); background:rgba(245,201,122,0.08); border:0.5px solid rgba(245,201,122,0.18);">7 styles</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.14);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.45);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#5E421E; border:0.5px solid rgba(255,210,140,0.14);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-pad-thai-grubhub.jpg" alt="Noodles"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-noodles" style="display:none;"><span>Pad Thai Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.65);">&#3648;&#3626;&#3657;&#3609;&#3649;&#3621;&#3632;&#3586;&#3657;&#3634;&#3623;</span>
+              <i class="ti ti-soup sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FAF0DC;">Noodles &amp; Rice</p>
+            <p class="sets-category-setname" style="color:rgba(250,240,220,0.52);">Pad Thai Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.60); background:rgba(245,201,122,0.08); border:0.5px solid rgba(245,201,122,0.18);">8 dishes</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.14);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $12.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.45);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#5E421E; border:0.5px solid rgba(255,210,140,0.14);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-curry-grubhub.jpg" alt="Curries"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-curries" style="display:none;"><span>Curry Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.65);">&#3649;&#3585;&#3591;&#3585;&#3632;&#3627;&#3619;&#3637;&#3656;</span>
+              <i class="ti ti-bowl sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FAF0DC;">Curries</p>
+            <p class="sets-category-setname" style="color:rgba(250,240,220,0.52);">Curry Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.60); background:rgba(245,201,122,0.08); border:0.5px solid rgba(245,201,122,0.18);">5 curries</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.14);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.45);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div><!-- /.sets-category-grid -->
+
+      <p class="sets-upcharge" style="color:rgba(250,240,220,0.38);">
+        Protein upcharges: +$1 veggies/tofu &middot; +$2 chicken/beef/pork &middot; +$3 shrimp
+      </p>
+
+      <!-- CTA — gold outlined primary with shimmer top edge -->
+      <div class="sets-cta-row">
+        <a class="sets-cta-primary" href="#"
+           style="
+             color:#FAF0DC;
+             border: 0.5px solid rgba(245,201,122,0.45);
+             background: rgba(245,201,122,0.10);
+             box-shadow: inset 0 1px 0 rgba(245,201,122,0.22), 0 1px 3px rgba(0,0,0,0.25);
+           ">
+          <span style="position:relative;z-index:1;">Order your set &rarr;</span>
+        </a>
+        <a class="sets-cta-secondary" href="#" style="color:rgba(245,201,122,0.60);">
+          Explore the full menu <span style="font-size:12px;">&rarr;</span>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page-ctx-bottom">
+  <div class="page-ctx-inner" style="padding-top:36px;">
+    <p class="page-ctx-label">Below — white page, story section entry</p>
+    <p class="page-ctx-text">Our story begins here</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TONE B — DARK AMBER HONEY  #5A3E22
+     Deep amber-brown, roasted warmth, closest to espresso range
+     but still warm. Heading goes full cream. Most atmospheric.
+═══════════════════════════════════════════════════════════ -->
+
+<div class="page-ctx" style="border-top: 2px dashed rgba(0,0,0,0.06);">
+  <div class="page-ctx-inner">
+    <p class="page-ctx-label">Above — white page, hero exit</p>
+    <p class="page-ctx-text">Hero content — white ground</p>
+  </div>
+</div>
+
+<div class="tone-strip">
+  <div class="tone-strip-inner">
+    <div class="tone-swatch" style="background:#5A3E22;"></div>
+    <div>
+      <div class="tone-number">Tone B</div>
+      <div class="tone-title">Dark Amber Honey <span class="tone-hex">#5A3E22</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="sets-section" style="
+  background: #5A3E22;
+  border-top: 0.5px solid rgba(255,210,140,0.20);
+  border-bottom: 0.5px solid rgba(0,0,0,0.40);
+">
+  <span class="dm dm-tl" aria-hidden="true" style="background:rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-tr" aria-hidden="true" style="border:1px solid rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-ti" aria-hidden="true" style="border:0.75px solid rgba(255,200,100,0.18);"></span>
+  <span class="dm dm-ml" aria-hidden="true" style="background:rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-mr" aria-hidden="true" style="background:rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-pg" aria-hidden="true" style="border:0.75px solid rgba(255,200,100,0.18);"></span>
+  <span class="dm dm-ca" aria-hidden="true" style="background:rgba(255,200,100,0.18);"></span>
+  <span class="dm dm-bl" aria-hidden="true" style="background:rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-br" aria-hidden="true" style="background:rgba(255,200,100,0.28);"></span>
+  <span class="dm dm-bi" aria-hidden="true" style="background:rgba(255,200,100,0.18);"></span>
+
+  <div class="container">
+    <div class="sets-inner">
+
+      <div class="sets-editorial">
+        <div class="sets-chapter" aria-hidden="true">
+          <div class="sets-chapter-rule" style="background:rgba(255,210,140,0.20);"></div>
+          <span class="sets-chapter-label" style="color:rgba(255,210,140,0.40);">Sets</span>
+          <div class="sets-chapter-rule" style="background:rgba(255,210,140,0.20);"></div>
+        </div>
+
+        <span class="sets-badge" style="color:#F5C97A; border:0.5px solid rgba(245,201,122,0.40); background:rgba(245,201,122,0.09);">New this season</span>
+
+        <h2 class="sets-title" style="color:#FDF3E0;">Quick n&rsquo; Easy <em>Sets</em></h2>
+        <p class="sets-sub" style="color:rgba(253,243,224,0.58);">Complete meals, your way &mdash; starting from $12.95.</p>
+
+        <div class="sets-strip">
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.50); color:#F5C97A; background:rgba(245,201,122,0.09);">01</div>
+            <span class="step-text" style="color:rgba(253,243,224,0.65);">Choose your main</span>
+          </div>
+          <div class="step-dot" style="background:rgba(245,201,122,0.30);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.50); color:#F5C97A; background:rgba(245,201,122,0.09);">02</div>
+            <span class="step-text" style="color:rgba(253,243,224,0.65);">Add a starter</span>
+          </div>
+          <div class="step-dot" style="background:rgba(245,201,122,0.30);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(245,201,122,0.50); color:#F5C97A; background:rgba(245,201,122,0.09);">03</div>
+            <span class="step-text" style="color:rgba(253,243,224,0.65);">Pick your protein</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sets-category-grid">
+
+        <a class="sets-category-card" href="#" style="background:#3D2510; border:0.5px solid rgba(255,210,140,0.12);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-thai-and-i-special.jpg" alt="Combinations"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-combinations" style="display:none;"><span>Thai &amp; I Special Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.55);">&#3612;&#3633;&#3604;&#3619;&#3623;&#3617;</span>
+              <i class="ti ti-flame sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FDF3E0;">Combinations</p>
+            <p class="sets-category-setname" style="color:rgba(253,243,224,0.45);">Thai &amp; I Special Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.55); background:rgba(245,201,122,0.07); border:0.5px solid rgba(245,201,122,0.16);">7 styles</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.12);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.40);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#3D2510; border:0.5px solid rgba(255,210,140,0.12);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-pad-thai-grubhub.jpg" alt="Noodles"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-noodles" style="display:none;"><span>Pad Thai Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.55);">&#3648;&#3626;&#3657;&#3609;&#3649;&#3621;&#3632;&#3586;&#3657;&#3634;&#3623;</span>
+              <i class="ti ti-soup sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FDF3E0;">Noodles &amp; Rice</p>
+            <p class="sets-category-setname" style="color:rgba(253,243,224,0.45);">Pad Thai Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.55); background:rgba(245,201,122,0.07); border:0.5px solid rgba(245,201,122,0.16);">8 dishes</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.12);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $12.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.40);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#3D2510; border:0.5px solid rgba(255,210,140,0.12);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-curry-grubhub.jpg" alt="Curries"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-curries" style="display:none;"><span>Curry Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(245,201,122,0.55);">&#3649;&#3585;&#3591;&#3585;&#3632;&#3627;&#3619;&#3637;&#3656;</span>
+              <i class="ti ti-bowl sets-card-icon" style="color:#F5C97A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#FDF3E0;">Curries</p>
+            <p class="sets-category-setname" style="color:rgba(253,243,224,0.45);">Curry Set</p>
+            <span class="sets-category-pill" style="color:rgba(245,201,122,0.55); background:rgba(245,201,122,0.07); border:0.5px solid rgba(245,201,122,0.16);">5 curries</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(255,210,140,0.12);">
+              <span class="sets-category-price" style="color:#F5C97A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(245,201,122,0.40);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="sets-upcharge" style="color:rgba(253,243,224,0.32);">
+        Protein upcharges: +$1 veggies/tofu &middot; +$2 chicken/beef/pork &middot; +$3 shrimp
+      </p>
+
+      <div class="sets-cta-row">
+        <a class="sets-cta-primary" href="#"
+           style="
+             color:#FDF3E0;
+             border: 0.5px solid rgba(245,201,122,0.38);
+             background: rgba(245,201,122,0.10);
+             box-shadow: inset 0 1px 0 rgba(245,201,122,0.20), 0 2px 6px rgba(0,0,0,0.30);
+           ">
+          Order your set &rarr;
+        </a>
+        <a class="sets-cta-secondary" href="#" style="color:rgba(245,201,122,0.55);">
+          Explore the full menu &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page-ctx-bottom">
+  <div class="page-ctx-inner" style="padding-top:36px;">
+    <p class="page-ctx-label">Below — white page, story section entry</p>
+    <p class="page-ctx-text">Our story begins here</p>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════════════
+     TONE C — DEEP FOREST CHARCOAL  #1F2E1A (green-charcoal)
+     Closest to the old site's forest feel — but refined.
+     Rich dark green-black. Gold on dark. Maximum contrast.
+     Tests whether the original direction was right all along.
+═══════════════════════════════════════════════════════════ -->
+
+<div class="page-ctx" style="border-top: 2px dashed rgba(0,0,0,0.06);">
+  <div class="page-ctx-inner">
+    <p class="page-ctx-label">Above — white page, hero exit</p>
+    <p class="page-ctx-text">Hero content — white ground</p>
+  </div>
+</div>
+
+<div class="tone-strip">
+  <div class="tone-strip-inner">
+    <div class="tone-swatch" style="background:#1F2E1A;"></div>
+    <div>
+      <div class="tone-number">Tone C</div>
+      <div class="tone-title">Deep Forest Charcoal <span class="tone-hex">#1F2E1A</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="sets-section" style="
+  background: #1F2E1A;
+  border-top: 0.5px solid rgba(200,230,160,0.10);
+  border-bottom: 0.5px solid rgba(0,0,0,0.50);
+">
+  <span class="dm dm-tl" aria-hidden="true" style="background:rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-tr" aria-hidden="true" style="border:1px solid rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-ti" aria-hidden="true" style="border:0.75px solid rgba(200,210,120,0.12);"></span>
+  <span class="dm dm-ml" aria-hidden="true" style="background:rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-mr" aria-hidden="true" style="background:rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-pg" aria-hidden="true" style="border:0.75px solid rgba(200,210,120,0.12);"></span>
+  <span class="dm dm-ca" aria-hidden="true" style="background:rgba(200,210,120,0.12);"></span>
+  <span class="dm dm-bl" aria-hidden="true" style="background:rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-br" aria-hidden="true" style="background:rgba(200,210,120,0.20);"></span>
+  <span class="dm dm-bi" aria-hidden="true" style="background:rgba(200,210,120,0.12);"></span>
+
+  <div class="container">
+    <div class="sets-inner">
+
+      <div class="sets-editorial">
+        <div class="sets-chapter" aria-hidden="true">
+          <div class="sets-chapter-rule" style="background:rgba(200,210,140,0.15);"></div>
+          <span class="sets-chapter-label" style="color:rgba(200,210,140,0.35);">Sets</span>
+          <div class="sets-chapter-rule" style="background:rgba(200,210,140,0.15);"></div>
+        </div>
+
+        <!-- Badge — gold, matching old site's gold accent -->
+        <span class="sets-badge" style="color:#C8941A; border:0.5px solid rgba(200,148,26,0.45); background:rgba(200,148,26,0.08);">New this season</span>
+
+        <!-- Heading — white/cream -->
+        <h2 class="sets-title" style="color:#F5F0E8;">Quick n&rsquo; Easy <em>Sets</em></h2>
+        <p class="sets-sub" style="color:rgba(245,240,232,0.58);">Complete meals, your way &mdash; starting from $12.95.</p>
+
+        <!-- Step strip — gold numbered circles, exact reference match -->
+        <div class="sets-strip">
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(200,148,26,0.55); color:#C8941A; background:rgba(200,148,26,0.08);">01</div>
+            <span class="step-text" style="color:rgba(245,240,232,0.65);">Choose your main</span>
+          </div>
+          <div class="step-dot" style="background:rgba(200,148,26,0.35);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(200,148,26,0.55); color:#C8941A; background:rgba(200,148,26,0.08);">02</div>
+            <span class="step-text" style="color:rgba(245,240,232,0.65);">Add a starter</span>
+          </div>
+          <div class="step-dot" style="background:rgba(200,148,26,0.35);"></div>
+          <div class="step-item">
+            <div class="step-badge" style="border:1px solid rgba(200,148,26,0.55); color:#C8941A; background:rgba(200,148,26,0.08);">03</div>
+            <span class="step-text" style="color:rgba(245,240,232,0.65);">Pick your protein</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sets-category-grid">
+
+        <a class="sets-category-card" href="#" style="background:#162210; border:0.5px solid rgba(200,148,26,0.15);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-thai-and-i-special.jpg" alt="Combinations"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-combinations" style="display:none;"><span>Thai &amp; I Special Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(200,148,26,0.60);">&#3612;&#3633;&#3604;&#3619;&#3623;&#3617;</span>
+              <i class="ti ti-flame sets-card-icon" style="color:#C8941A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#F5F0E8;">Combinations</p>
+            <p class="sets-category-setname" style="color:rgba(245,240,232,0.42);">Thai &amp; I Special Set</p>
+            <span class="sets-category-pill" style="color:rgba(200,148,26,0.60); background:rgba(200,148,26,0.07); border:0.5px solid rgba(200,148,26,0.18);">7 styles</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(200,148,26,0.12);">
+              <span class="sets-category-price" style="color:#C8941A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(200,148,26,0.42);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#162210; border:0.5px solid rgba(200,148,26,0.15);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-pad-thai-grubhub.jpg" alt="Noodles"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-noodles" style="display:none;"><span>Pad Thai Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(200,148,26,0.60);">&#3648;&#3626;&#3657;&#3609;&#3649;&#3621;&#3632;&#3586;&#3657;&#3634;&#3623;</span>
+              <i class="ti ti-soup sets-card-icon" style="color:#C8941A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#F5F0E8;">Noodles &amp; Rice</p>
+            <p class="sets-category-setname" style="color:rgba(245,240,232,0.42);">Pad Thai Set</p>
+            <span class="sets-category-pill" style="color:rgba(200,148,26,0.60); background:rgba(200,148,26,0.07); border:0.5px solid rgba(200,148,26,0.18);">8 dishes</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(200,148,26,0.12);">
+              <span class="sets-category-price" style="color:#C8941A;">From $12.95</span>
+              <span class="sets-card-arrow" style="color:rgba(200,148,26,0.42);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <a class="sets-category-card" href="#" style="background:#162210; border:0.5px solid rgba(200,148,26,0.15);">
+          <div class="sets-card-img-wrap">
+            <img class="sets-category-img" src="assets/images/sets/set-curry-grubhub.jpg" alt="Curries"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+            <div class="img-fallback img-curries" style="display:none;"><span>Curry Set</span></div>
+          </div>
+          <div class="sets-card-body">
+            <div class="sets-card-top">
+              <span class="sets-category-thai" style="color:rgba(200,148,26,0.60);">&#3649;&#3585;&#3591;&#3585;&#3632;&#3627;&#3619;&#3637;&#3656;</span>
+              <i class="ti ti-bowl sets-card-icon" style="color:#C8941A;" aria-hidden="true"></i>
+            </div>
+            <p class="sets-category-name" style="color:#F5F0E8;">Curries</p>
+            <p class="sets-category-setname" style="color:rgba(245,240,232,0.42);">Curry Set</p>
+            <span class="sets-category-pill" style="color:rgba(200,148,26,0.60); background:rgba(200,148,26,0.07); border:0.5px solid rgba(200,148,26,0.18);">5 curries</span>
+            <div class="sets-card-prow" style="border-top:0.5px solid rgba(200,148,26,0.12);">
+              <span class="sets-category-price" style="color:#C8941A;">From $13.95</span>
+              <span class="sets-card-arrow" style="color:rgba(200,148,26,0.42);">&rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="sets-upcharge" style="color:rgba(245,240,232,0.28);">
+        Protein upcharges: +$1 veggies/tofu &middot; +$2 chicken/beef/pork &middot; +$3 shrimp
+      </p>
+
+      <div class="sets-cta-row">
+        <a class="sets-cta-primary" href="#"
+           style="
+             color:#F5F0E8;
+             border: 0.5px solid rgba(200,148,26,0.40);
+             background: rgba(200,148,26,0.12);
+             box-shadow: inset 0 1px 0 rgba(200,148,26,0.22), 0 2px 8px rgba(0,0,0,0.35);
+           ">
+          Order your set &rarr;
+        </a>
+        <a class="sets-cta-secondary" href="#" style="color:rgba(200,148,26,0.60);">
+          Explore the full menu &rarr;
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="page-ctx-bottom">
+  <div class="page-ctx-inner" style="padding-top:36px;">
+    <p class="page-ctx-label">Below — white page, story section entry</p>
+    <p class="page-ctx-text">Our story begins here</p>
+  </div>
+</div>
+
+</body>
+</html>
