@@ -2080,6 +2080,123 @@
 }
 
 /* ============================================================
+   FOOD PHOTO STRIP  (replaces Staff Favourites)
+   ============================================================ */
+.food-strip-section {
+  background: var(--warm-linen-dark);
+}
+
+.food-strip-inner {
+  padding-block: var(--section-py-sm);
+  text-align: center;
+}
+
+.food-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-lg);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.food-strip-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.875rem;
+}
+
+.food-strip-img-wrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.food-strip-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.55s var(--ease);
+}
+
+.food-strip-item:hover .food-strip-img-wrap img {
+  transform: scale(1.04);
+}
+
+.food-strip-name {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 500;
+  color: var(--forest-charcoal);
+  line-height: var(--leading-snug);
+}
+
+.food-strip-cta {
+  display: inline-block;
+  font-size: var(--text-xs);
+  color: var(--smoke);
+  letter-spacing: 0.04em;
+  border-bottom: 0.5px solid var(--smoke-light);
+  padding-bottom: 2px;
+  transition: color var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease);
+}
+
+.food-strip-cta:hover {
+  color: var(--thai-chili);
+  border-color: var(--thai-chili);
+}
+
+@media (max-width: 600px) {
+  .food-strip-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+    margin-inline: auto;
+  }
+}
+
+/* ============================================================
+   PRESS STRIP  (condensed recognition — above footer)
+   ============================================================ */
+.press-strip {
+  background: var(--forest-charcoal);
+  border-top: 0.5px solid rgba(255, 255, 255, 0.06);
+  padding: 1rem var(--container-px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  flex-wrap: wrap;
+}
+
+.press-strip-label {
+  font-size: var(--text-xs);
+  color: rgba(245, 240, 232, 0.35);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  font-family: var(--font-body);
+}
+
+.press-strip-link {
+  font-size: var(--text-xs);
+  color: rgba(245, 240, 232, 0.55);
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+  transition: color var(--duration-fast) var(--ease);
+}
+
+a.press-strip-link:hover {
+  color: var(--warm-linen);
+}
+
+.press-strip-dot {
+  color: rgba(245, 240, 232, 0.2);
+  font-size: var(--text-xs);
+}
+
+/* ============================================================
    FOOTER
    ============================================================ */
 .site-footer {

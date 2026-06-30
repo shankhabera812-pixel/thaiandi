@@ -1,0 +1,182 @@
+/* ============================================================
+   MENU PAGE — menu.html specific styles
+   Page header, pricing banner, period label time context,
+   mobile readability overrides, footer CTA
+   ============================================================ */
+
+/* ── Page header ──────────────────────────────────────────── */
+.menu-page-hero {
+  background: var(--forest-charcoal);
+  padding-top: 70px; /* clear fixed nav */
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+}
+
+.menu-page-hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--gap-xl);
+  padding-block: 2.75rem 2.5rem;
+  flex-wrap: wrap;
+}
+
+.menu-page-hero .section-eyebrow {
+  color: var(--thai-chili);
+  margin-bottom: 0.625rem;
+}
+
+.menu-page-title {
+  font-family: var(--font-display);
+  font-size: clamp(var(--text-3xl), 4vw, var(--text-5xl));
+  font-weight: 600;
+  color: var(--warm-linen);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.menu-page-hours {
+  font-size: var(--text-sm);
+  color: rgba(245, 240, 232, 0.5);
+  font-family: var(--font-body);
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.menu-page-order-row {
+  flex-shrink: 0;
+}
+
+/* ── Lunch / Dinner clarity banner ───────────────────────── */
+.menu-pricing-banner {
+  background: var(--warm-linen-dark);
+  border-bottom: 0.5px solid var(--border-color);
+  padding: 0.7rem var(--container-px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.875rem;
+  font-size: var(--text-sm);
+  color: var(--smoke);
+  font-family: var(--font-body);
+  letter-spacing: 0.025em;
+  text-align: center;
+}
+
+.menu-pricing-banner-dot {
+  color: var(--smoke-light);
+  flex-shrink: 0;
+}
+
+/* ── Period label time context ───────────────────────────── */
+/* Injected by menu-tabs.js into .menu-period-label */
+.menu-period-time {
+  font-size: 0.72em;
+  font-style: normal;
+  font-weight: 400;
+  font-family: var(--font-body);
+  color: rgba(200, 64, 26, 0.6); /* faded chili — softer echo of the period label */
+  letter-spacing: 0.03em;
+  margin-left: 0.45em;
+  white-space: nowrap;
+}
+
+/* ── Mobile-first menu item readability ──────────────────── */
+/* These override the template's desktop-first sizing.
+   Applied at 768px and below — where the Route 9 visitor
+   is most likely reading on their phone. */
+@media (max-width: 768px) {
+  .menu-item-name {
+    font-size: 1rem;       /* up from 13px → 16px */
+    line-height: 1.4;
+  }
+  .menu-item-desc {
+    font-size: 0.875rem;   /* up from 11px → 14px */
+    line-height: 1.55;
+    margin-top: 4px;
+  }
+  .menu-item-price {
+    font-size: 1rem;       /* up from 13px → 16px */
+  }
+  .menu-item {
+    padding: 0.9rem 0;     /* more breathing room between items */
+  }
+  .menu-protein-tier-label {
+    font-size: 0.8125rem;  /* up from 11px → 13px */
+    line-height: 1.5;
+  }
+  .menu-protein-tier-price {
+    font-size: 0.8125rem;
+  }
+  .menu-panel-intro {
+    font-size: 0.875rem;
+  }
+  .menu-protein-note {
+    font-size: 0.875rem;
+  }
+  /* Looser item grid on mobile — single column already, just add more inner padding */
+  .menu-panels {
+    padding-top: 1.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Page hero stacks on small screens */
+  .menu-page-hero-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--gap-lg);
+    padding-block: 2rem 1.75rem;
+  }
+  .menu-page-order-row {
+    width: 100%;
+  }
+  /* Pricing banner stacks the two lines */
+  .menu-pricing-banner {
+    flex-direction: column;
+    gap: 0.2rem;
+    padding: 0.75rem var(--container-px);
+    font-size: var(--text-xs);
+  }
+  .menu-pricing-banner-dot {
+    display: none;
+  }
+  /* Header shorter on mobile */
+  .menu-page-hero {
+    padding-top: 60px; /* match 60px mobile header height */
+  }
+}
+
+/* ── Footer order CTA ────────────────────────────────────── */
+.menu-page-footer-cta {
+  background: var(--warm-linen-dark);
+  border-top: 0.5px solid var(--border-color);
+  text-align: center;
+  padding: 2.5rem var(--container-px) 3rem;
+}
+
+.menu-page-footer-cta-label {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--smoke);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-body);
+}
+
+.menu-page-footer-cta-row {
+  justify-content: center;
+}
+
+@media (max-width: 480px) {
+  .menu-page-footer-cta-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .menu-page-footer-cta-row .order-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
+}

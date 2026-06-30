@@ -56,7 +56,10 @@
   }
 
   function buildSubsectionPeriodLabel(period) {
-    const labels = { lunch: 'Lunch', dinner: 'Dinner' };
+    const labels = {
+      lunch:  'Lunch <span class="menu-period-time">until 3 PM</span>',
+      dinner: 'Dinner <span class="menu-period-time">after 3 PM</span>'
+    };
     return `<span class="menu-period-label">${labels[period] || ''}</span>`;
   }
 
@@ -146,6 +149,18 @@
     }
 
     bindTabClicks();
+
+    // Activate tab from URL parameter — e.g. menu.html?tab=curries
+    // Used by category strip links on index.html to deep-link into specific tabs.
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam  = urlParams.get('tab');
+    if (tabParam) {
+      const targetBtn = document.querySelector(`.menu-tab[data-tab="${tabParam}"]`);
+      if (targetBtn) {
+        // Short delay ensures DOM paint is complete before activating
+        setTimeout(() => targetBtn.click(), 60);
+      }
+    }
   }
 
   function bindTabClicks() {

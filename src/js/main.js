@@ -44,6 +44,7 @@
     const mobileNav = document.querySelector('.mobile-nav');
     if (!hamburger || !mobileNav) return;
 
+    const HEADER_HEIGHT = 80;
     let isOpen = false;
 
     function openNav() {
@@ -62,9 +63,30 @@
 
     hamburger.addEventListener('click', () => isOpen ? closeNav() : openNav());
 
-    // Close on link click
+    // Close on link click — handle in-page anchor scrolling here directly.
+    // initHashScroll skips mobile-nav links to avoid double-handling and
+    // incorrect getBoundingClientRect() calls while the overlay is mid-transition.
     mobileNav.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', closeNav);
+      a.addEventListener('click', (e) => {
+        const href = a.getAttribute('href');
+        const isHash = href && href.startsWith('#') && href.length > 1;
+
+        if (isHash) {
+          e.preventDefault();
+          closeNav();
+          // Delay scroll until overlay begins fading (CSS transition: 500ms).
+          // 320ms gives the overlay enough time to start closing so
+          // getBoundingClientRect() returns the correct position.
+          setTimeout(() => {
+            const target = document.querySelector(href);
+            if (!target) return;
+            const top = target.getBoundingClientRect().top + window.scrollY - HEADER_HEIGHT;
+            window.scrollTo({ top, behavior: 'smooth' });
+          }, 320);
+        } else {
+          closeNav();
+        }
+      });
     });
 
     // Close on escape
@@ -133,6 +155,8 @@
   function initHashScroll() {
     const HEADER_HEIGHT = 80;
     document.querySelectorAll('a[href^="#"]').forEach(a => {
+      // Mobile nav links manage their own close + scroll sequence — skip them here.
+      if (a.closest('.mobile-nav')) return;
       a.addEventListener('click', (e) => {
         const target = document.querySelector(a.getAttribute('href'));
         if (!target) return;
