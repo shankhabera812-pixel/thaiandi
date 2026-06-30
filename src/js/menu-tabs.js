@@ -1,6 +1,6 @@
 /**
  * Menu rendering from menu.json + tab system
- * Renders items dynamically and handles tab switching and category-oval linking
+ * Renders items dynamically, handles tab switching, and URL-param deep-linking.
  */
 (function () {
   'use strict';
@@ -11,6 +11,15 @@
 
   function formatPrice(val) {
     return '$' + val.toFixed(2);
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
   }
 
   function buildMenuRow(item, priceFrom) {
@@ -93,7 +102,6 @@
         html += `</div>`;
       });
     } else {
-      // Check for drink groupLabels
       tab.subsections.forEach(sub => {
         if (sub.groupLabel) {
           html += `<div class="menu-period-group">`;
@@ -109,9 +117,40 @@
     return html;
   }
 
-  function escapeHtml(str) {
-    if (!str) return '';
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  /* ── Central tab activation ─────────────────────────────────────────
+     opts.scroll  (default true)  — scroll active tab button into view
+     opts.animate (default true)  — play panel entry animation
+  ─────────────────────────────────────────────────────────────────── */
+  function activateTab(tabId, opts) {
+    const doScroll  = !opts || opts.scroll  !== false;
+    const doAnimate = !opts || opts.animate !== false;
+
+    const tabs   = Array.from(document.querySelectorAll('.menu-tab'));
+    const panels = Array.from(document.querySelectorAll('.menu-panel'));
+
+    tabs.forEach(t => {
+      t.classList.remove('is-active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    panels.forEach(p => p.classList.remove('is-active', 'panel-enter'));
+
+    const btn   = tabs.find(t => t.dataset.tab === tabId);
+    const panel = document.getElementById('panel-' + tabId);
+    if (!btn || !panel) return;
+
+    btn.classList.add('is-active');
+    btn.setAttribute('aria-selected', 'true');
+    panel.classList.add('is-active');
+
+    if (doAnimate) {
+      // Force layout reflow so the animation restarts cleanly on every tab switch
+      void panel.offsetWidth;
+      panel.classList.add('panel-enter');
+    }
+
+    if (doScroll) {
+      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
   }
 
   function renderMenu(data) {
@@ -123,7 +162,6 @@
     panelsEl.innerHTML = '';
 
     data.tabs.forEach((tab, i) => {
-      // Tab button
       const btn = document.createElement('button');
       btn.className   = 'menu-tab' + (i === 0 ? ' is-active' : '');
       btn.type        = 'button';
@@ -133,7 +171,6 @@
       btn.setAttribute('role', 'tab');
       tabsEl.appendChild(btn);
 
-      // Panel
       const panel = document.createElement('div');
       panel.className   = 'menu-panel' + (i === 0 ? ' is-active' : '');
       panel.id          = 'panel-' + tab.id;
@@ -142,87 +179,33 @@
       panelsEl.appendChild(panel);
     });
 
-    // Footnote
     if (data.footnote) {
       const footer = document.querySelector('.menu-footer .menu-pricing-note');
       if (footer) footer.textContent = data.footnote;
     }
 
-    bindTabClicks();
+    // Bind click listeners — each click calls activateTab directly
+    document.querySelectorAll('.menu-tab').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activateTab(btn.dataset.tab, { scroll: true, animate: true });
+      });
+    });
 
-    // Activate tab from URL parameter — e.g. menu.html?tab=curries
-    // Used by category strip links on index.html to deep-link into specific tabs.
-    const urlParams = new URLSearchParams(window.location.search);
-    const tabParam  = urlParams.get('tab');
+    // Deep-link from URL param — e.g. menu.html?tab=curries
+    // requestAnimationFrame ensures layout is complete before activation
+    const tabParam = new URLSearchParams(window.location.search).get('tab');
     if (tabParam) {
-      const targetBtn = document.querySelector(`.menu-tab[data-tab="${tabParam}"]`);
-      if (targetBtn) {
-        // Short delay ensures DOM paint is complete before activating
-        setTimeout(() => targetBtn.click(), 60);
-      }
+      requestAnimationFrame(() => {
+        activateTab(tabParam, { scroll: true, animate: false });
+      });
     }
   }
 
-  function bindTabClicks() {
-    const tabs   = Array.from(document.querySelectorAll('.menu-tab'));
-    const panels = Array.from(document.querySelectorAll('.menu-panel'));
-
-    tabs.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabs.forEach(t => {
-          t.classList.remove('is-active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        panels.forEach(p => p.classList.remove('is-active'));
-
-        btn.classList.add('is-active');
-        btn.setAttribute('aria-selected', 'true');
-
-        const target = document.getElementById('panel-' + btn.dataset.tab);
-        if (target) target.classList.add('is-active');
-
-        // Scroll tab into view on mobile
-        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      });
-    });
-  }
-
-  function activateMenuTab(tabId) {
-    const menuSection = document.querySelector('#menu');
-    const target = document.querySelector(`.menu-tab[data-tab="${tabId}"]`);
-    if (!menuSection || !target) return;
-
-    // Scroll to menu section
-    menuSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    // Activate tab after scroll lands (short delay)
-    setTimeout(() => {
-      target.click();
-    }, 600);
-  }
-
-  // Wire category oval cards to menu tabs
-  function bindCategoryCards() {
-    document.querySelectorAll('[data-menu-tab]').forEach(card => {
-      card.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabId = card.dataset.menuTab;
-        activateMenuTab(tabId);
-      });
-    });
-  }
-
-  // Load menu data and render
   function init() {
     fetch('src/data/menu.json')
       .then(r => r.json())
-      .then(data => {
-        renderMenu(data);
-        bindCategoryCards();
-      })
-      .catch(err => {
-        console.warn('Menu data failed to load:', err);
-      });
+      .then(data => renderMenu(data))
+      .catch(err => console.warn('Menu data failed to load:', err));
   }
 
   if (document.readyState === 'loading') {
@@ -231,6 +214,5 @@
     init();
   }
 
-  // Expose for external use
-  window.BRMenu = { activateMenuTab };
+  window.BRMenu = { activateTab };
 })();

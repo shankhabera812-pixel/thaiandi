@@ -1,13 +1,13 @@
 /* ============================================================
    MENU PAGE — menu.html specific styles
-   Page header, pricing banner, period label time context,
-   mobile readability overrides, footer CTA
+   Page header · pricing banner · tab sizing · panel animation
+   item sizing · award badge · footer CTA
    ============================================================ */
 
 /* ── Page header ──────────────────────────────────────────── */
 .menu-page-hero {
   background: var(--forest-charcoal);
-  padding-top: 70px; /* clear fixed nav */
+  padding-top: 70px;
   border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
@@ -47,103 +47,233 @@
   flex-shrink: 0;
 }
 
+/* ── RestaurantGuru award badge ──────────────────────────── */
+.menu-award-badge {
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.menu-award-badge img {
+  width: 92px;
+  height: auto;
+  border-radius: 6px;
+  opacity: 0.9;
+  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
+  transition: opacity 0.2s ease, filter 0.2s ease;
+}
+
+.menu-award-badge img:hover {
+  opacity: 1;
+  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+}
+
 /* ── Lunch / Dinner clarity banner ───────────────────────── */
 .menu-pricing-banner {
   background: var(--warm-linen-dark);
   border-bottom: 0.5px solid var(--border-color);
-  padding: 0.7rem var(--container-px);
+  padding: 0.875rem var(--container-px);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.875rem;
-  font-size: var(--text-sm);
-  color: var(--smoke);
+  gap: 1.5rem;
   font-family: var(--font-body);
-  letter-spacing: 0.025em;
   text-align: center;
 }
 
-.menu-pricing-banner-dot {
-  color: var(--smoke-light);
+/* Each half — icon + text */
+.menu-pricing-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--text-sm);
+  color: var(--smoke);
+  letter-spacing: 0.01em;
+}
+
+.menu-pricing-item svg {
+  flex-shrink: 0;
+  width: 15px;
+  height: 15px;
+  opacity: 0.85;
+}
+
+.menu-pricing-item--lunch svg { color: #c8401a; }
+.menu-pricing-item--dinner svg { color: #3d6b52; }
+
+/* Bold time anchors */
+.menu-pricing-item strong {
+  color: var(--forest-charcoal);
+  font-weight: 600;
+}
+
+/* Vertical rule between lunch and dinner */
+.menu-pricing-banner-divider {
+  display: block;
+  width: 1px;
+  height: 1.25rem;
+  background: var(--border-color);
   flex-shrink: 0;
 }
 
 /* ── Period label time context ───────────────────────────── */
-/* Injected by menu-tabs.js into .menu-period-label */
 .menu-period-time {
   font-size: 0.72em;
   font-style: normal;
   font-weight: 400;
   font-family: var(--font-body);
-  color: rgba(200, 64, 26, 0.6); /* faded chili — softer echo of the period label */
+  color: rgba(200, 64, 26, 0.6);
   letter-spacing: 0.03em;
   margin-left: 0.45em;
   white-space: nowrap;
 }
 
-/* ── Mobile-first menu item readability ──────────────────── */
-/* These override the template's desktop-first sizing.
-   Applied at 768px and below — where the Route 9 visitor
-   is most likely reading on their phone. */
+/* ── Tab button sizing overrides ─────────────────────────── */
+/* Bigger and more comfortable than the inherited template defaults */
+.menu-tab {
+  font-size: 0.8rem;            /* 12.8px — up from ~12px */
+  padding: 1.1rem 1.35rem;
+  letter-spacing: 0.07em;       /* slightly less tight than --tracking-caps */
+}
+
+/* ── Tab active indicator — spring scale animation ───────── */
+/* Replaces the static border-bottom with a satisfying spring pop */
+.menu-tabs .menu-tab {
+  position: relative;
+  border-bottom: 2px solid transparent;
+  transition: color 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.menu-tabs .menu-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--thai-chili);
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  /* Spring easing: slight overshoot, then settles */
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.menu-tabs .menu-tab.is-active {
+  border-bottom-color: transparent; /* cede to ::after */
+}
+
+.menu-tabs .menu-tab.is-active::after {
+  transform: scaleX(1);
+}
+
+/* ── Panel entry animation ───────────────────────────────── */
+@keyframes menuPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.menu-panel.panel-enter {
+  animation: menuPanelIn 0.32s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Menu item sizing — global increases ─────────────────── */
+/* Applied at all screen sizes. Names get a proportionally larger
+   bump than descriptions, widening the visual hierarchy gap. */
+.menu-item-name {
+  font-size: 1.05rem;   /* up from ~13px base → ~16.8px */
+  line-height: 1.35;
+}
+
+.menu-item-desc {
+  font-size: 0.875rem;  /* stable — contrast against bigger name */
+  line-height: 1.55;
+}
+
+.menu-item-price {
+  font-size: 1.05rem;
+}
+
+/* Mobile refinements — further increase, maintain the wider gap */
 @media (max-width: 768px) {
+  .menu-tab {
+    font-size: 0.78rem;   /* ~12.5px on tablet */
+    padding: 1rem 1.1rem;
+  }
+
   .menu-item-name {
-    font-size: 1rem;       /* up from 13px → 16px */
+    font-size: 1.125rem;  /* 18px on mobile — clear dominant label */
     line-height: 1.4;
   }
+
   .menu-item-desc {
-    font-size: 0.875rem;   /* up from 11px → 14px */
-    line-height: 1.55;
+    font-size: 0.9rem;    /* 14.4px — proportional but clearly secondary */
+    line-height: 1.6;
     margin-top: 4px;
   }
+
   .menu-item-price {
-    font-size: 1rem;       /* up from 13px → 16px */
+    font-size: 1.0625rem; /* 17px */
   }
+
   .menu-item {
-    padding: 0.9rem 0;     /* more breathing room between items */
+    padding: 0.9rem 0;
   }
-  .menu-protein-tier-label {
-    font-size: 0.8125rem;  /* up from 11px → 13px */
-    line-height: 1.5;
-  }
+
+  .menu-protein-tier-label,
   .menu-protein-tier-price {
     font-size: 0.8125rem;
+    line-height: 1.5;
   }
-  .menu-panel-intro {
-    font-size: 0.875rem;
-  }
+
+  .menu-panel-intro,
   .menu-protein-note {
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
-  /* Looser item grid on mobile — single column already, just add more inner padding */
+
   .menu-panels {
     padding-top: 1.75rem;
   }
 }
 
 @media (max-width: 480px) {
-  /* Page hero stacks on small screens */
+  .menu-page-hero {
+    padding-top: 60px;
+  }
+
   .menu-page-hero-inner {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--gap-lg);
     padding-block: 2rem 1.75rem;
   }
+
   .menu-page-order-row {
     width: 100%;
   }
-  /* Pricing banner stacks the two lines */
+
+  /* Tab button: comfortable 12px on small phones */
+  .menu-tab {
+    font-size: 0.75rem;   /* 12px — was 10px */
+    padding: 0.9375rem 0.875rem;
+    letter-spacing: 0.065em;
+  }
+
+  /* Pricing banner stacks vertically */
   .menu-pricing-banner {
     flex-direction: column;
-    gap: 0.2rem;
-    padding: 0.75rem var(--container-px);
-    font-size: var(--text-xs);
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.875rem var(--container-px);
   }
-  .menu-pricing-banner-dot {
+
+  .menu-pricing-banner-divider {
     display: none;
-  }
-  /* Header shorter on mobile */
-  .menu-page-hero {
-    padding-top: 60px; /* match 60px mobile header height */
   }
 }
 
@@ -174,6 +304,7 @@
     flex-direction: column;
     align-items: center;
   }
+
   .menu-page-footer-cta-row .order-btn {
     width: 100%;
     max-width: 280px;
