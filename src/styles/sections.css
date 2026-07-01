@@ -87,12 +87,11 @@
 }
 
 .nav-new-mark {
-  display: none;
   font-size: 7px;
   vertical-align: super;
   margin-left: 2px;
-  color: #F5C97A;
-  opacity: 0.82;
+  color: inherit;
+  opacity: 0.6;
   font-family: var(--font-body);
   font-weight: 400;
   line-height: 0;
