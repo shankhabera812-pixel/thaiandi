@@ -47,24 +47,50 @@
   flex-shrink: 0;
 }
 
-/* ── RestaurantGuru award badge ──────────────────────────── */
-.menu-award-badge {
-  display: inline-block;
-  margin-top: 1.5rem;
+/* ── Order buttons on dark hero ──────────────────────────── */
+/* Toast uses the same forest-charcoal as the hero background,
+   so invert it to a warm-linen pill with a dark wordmark.
+   All three buttons get a lift shadow so they read as tappable. */
+.menu-page-hero .order-btn {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 4px 16px rgba(0, 0, 0, 0.28);
 }
 
-.menu-award-badge img {
-  width: 92px;
-  height: auto;
-  border-radius: 6px;
-  opacity: 0.9;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.menu-award-badge img:hover {
+.menu-page-hero .order-btn:hover {
   opacity: 1;
-  filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.35));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 6px 22px rgba(0, 0, 0, 0.34);
+}
+
+.menu-page-hero .order-btn--toast {
+  background: var(--warm-linen);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 4px 18px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+.menu-page-hero .order-btn--toast .order-btn__wordmark {
+  filter: brightness(0) saturate(100%);
+  opacity: 0.88;
+}
+
+.menu-page-hero .order-btn--toast:hover {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 6px 24px rgba(0, 0, 0, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+/* Footer CTA sits on warm-linen — subtle lift for Toast */
+.menu-page-footer-cta .order-btn--toast {
+  box-shadow: 0 2px 10px rgba(28, 43, 34, 0.14);
+}
+
+.menu-page-footer-cta .order-btn--toast:hover {
+  box-shadow: 0 4px 14px rgba(28, 43, 34, 0.2);
 }
 
 /* ── Lunch / Dinner clarity banner ───────────────────────── */
