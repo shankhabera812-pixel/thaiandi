@@ -5,10 +5,6 @@
 (function () {
   'use strict';
 
-  const TOAST_URL    = 'https://order.toasttab.com/online/thai-i';
-  const GRUBHUB_URL  = 'https://www.grubhub.com/restaurant/thai-and-i-restaurant-274-south-st-shrewsbury/2196678';
-  const DOORDASH_URL = 'https://www.doordash.com/store/thai-and-i-shrewsbury-865539/';
-
   function formatPrice(val) {
     return '$' + val.toFixed(2);
   }
@@ -118,94 +114,117 @@
   }
 
   /* ── Central tab activation ─────────────────────────────────────────
-     opts.scroll  (default true)  — scroll active tab button into view
      opts.animate (default true)  — play panel entry animation
+     opts.scrollTab (default true) — scroll active tab into view in the bar
   ─────────────────────────────────────────────────────────────────── */
   function activateTab(tabId, opts) {
-    const doScroll  = !opts || opts.scroll  !== false;
-    const doAnimate = !opts || opts.animate !== false;
+    const doAnimate   = !opts || opts.animate   !== false;
+    const doScrollTab = !opts || opts.scrollTab !== false;
 
-    const tabs   = Array.from(document.querySelectorAll('.menu-tab'));
-    const panels = Array.from(document.querySelectorAll('.menu-panel'));
+    var tabs   = Array.from(document.querySelectorAll('.menu-tab'));
+    var panels = Array.from(document.querySelectorAll('.menu-panel'));
 
-    tabs.forEach(t => {
+    // Nothing to activate — bail cleanly
+    if (!tabs.length) return;
+
+    tabs.forEach(function (t) {
       t.classList.remove('is-active');
       t.setAttribute('aria-selected', 'false');
     });
-    panels.forEach(p => p.classList.remove('is-active', 'panel-enter'));
+    panels.forEach(function (p) {
+      p.classList.remove('is-active', 'panel-enter');
+    });
 
-    const btn   = tabs.find(t => t.dataset.tab === tabId);
-    const panel = document.getElementById('panel-' + tabId);
-    if (!btn || !panel) return;
+    var btn   = tabs.find(function (t) { return t.dataset.tab === tabId; });
+    var panel = document.getElementById('panel-' + tabId);
+
+    // Unknown tab ID — fall back gracefully to first tab
+    if (!btn || !panel) {
+      btn   = tabs[0];
+      panel = panels[0];
+    }
 
     btn.classList.add('is-active');
     btn.setAttribute('aria-selected', 'true');
     panel.classList.add('is-active');
 
     if (doAnimate) {
-      // Force layout reflow so the animation restarts cleanly on every tab switch
+      // Force reflow so the animation always restarts from the 'from' keyframe
       void panel.offsetWidth;
       panel.classList.add('panel-enter');
     }
 
-    if (doScroll) {
-      btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    if (doScrollTab) {
+      btn.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
     }
   }
 
   function renderMenu(data) {
-    const tabsEl   = document.querySelector('.menu-tabs');
-    const panelsEl = document.querySelector('.menu-panels');
+    var tabsEl   = document.querySelector('.menu-tabs');
+    var panelsEl = document.querySelector('.menu-panels');
     if (!tabsEl || !panelsEl) return;
 
     tabsEl.innerHTML   = '';
     panelsEl.innerHTML = '';
 
-    data.tabs.forEach((tab, i) => {
-      const btn = document.createElement('button');
-      btn.className   = 'menu-tab' + (i === 0 ? ' is-active' : '');
-      btn.type        = 'button';
+    data.tabs.forEach(function (tab, i) {
+      var btn = document.createElement('button');
+      btn.className  = 'menu-tab' + (i === 0 ? ' is-active' : '');
+      btn.type       = 'button';
       btn.textContent = tab.label;
       btn.dataset.tab = tab.id;
       btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
       btn.setAttribute('role', 'tab');
       tabsEl.appendChild(btn);
 
-      const panel = document.createElement('div');
-      panel.className   = 'menu-panel' + (i === 0 ? ' is-active' : '');
-      panel.id          = 'panel-' + tab.id;
+      var panel = document.createElement('div');
+      panel.className = 'menu-panel' + (i === 0 ? ' is-active' : '');
+      panel.id        = 'panel-' + tab.id;
       panel.setAttribute('role', 'tabpanel');
-      panel.innerHTML   = buildPanel(tab);
+      panel.innerHTML = buildPanel(tab);
       panelsEl.appendChild(panel);
     });
 
     if (data.footnote) {
-      const footer = document.querySelector('.menu-footer .menu-pricing-note');
+      var footer = document.querySelector('.menu-footer .menu-pricing-note');
       if (footer) footer.textContent = data.footnote;
     }
 
-    // Bind click listeners — each click calls activateTab directly
-    document.querySelectorAll('.menu-tab').forEach(btn => {
-      btn.addEventListener('click', () => {
-        activateTab(btn.dataset.tab, { scroll: true, animate: true });
+    // Bind click listeners
+    document.querySelectorAll('.menu-tab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activateTab(btn.dataset.tab, { animate: true, scrollTab: true });
       });
     });
 
-    // Deep-link from URL param — e.g. menu.html?tab=curries
-    // requestAnimationFrame ensures layout is complete before activation
-    const tabParam = new URLSearchParams(window.location.search).get('tab');
+    // ── URL param deep-link ──────────────────────────────────────────
+    // e.g. menu.html?tab=curries
+    // Uses a 60ms setTimeout (vs rAF) so the browser has completed
+    // its initial layout pass — more reliable across browsers.
+    // Then scrolls the entire page to the menu section so the correct
+    // panel is visible immediately without requiring manual scrolling.
+    var tabParam = new URLSearchParams(window.location.search).get('tab');
     if (tabParam) {
-      requestAnimationFrame(() => {
-        activateTab(tabParam, { scroll: true, animate: false });
-      });
+      setTimeout(function () {
+        // Activate the correct tab (no panel animation — it's a page load)
+        activateTab(tabParam, { animate: false, scrollTab: true });
+
+        // Scroll the page so the tab bar + panel are visible
+        var menuSection = document.getElementById('menu');
+        if (menuSection) {
+          var headerOffset = 80; // match sticky header height
+          var top = menuSection.getBoundingClientRect().top + window.scrollY - headerOffset;
+          window.scrollTo({ top: top, behavior: 'smooth' });
+        }
+      }, 60);
     }
   }
 
   function init() {
     fetch('src/data/menu.json')
-      .then(r => r.json())
-      .then(data => renderMenu(data))
-      .catch(err => console.warn('Menu data failed to load:', err));
+      .then(function (r) { return r.json(); })
+      .then(function (data) { renderMenu(data); })
+      .catch(function (err) { console.warn('Menu data failed to load:', err); });
   }
 
   if (document.readyState === 'loading') {
@@ -214,5 +233,5 @@
     init();
   }
 
-  window.BRMenu = { activateTab };
+  window.BRMenu = { activateTab: activateTab };
 })();
