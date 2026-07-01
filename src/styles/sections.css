@@ -86,15 +86,8 @@
   transform: scaleX(1);
 }
 
-/* Sets nav link — gold text + ✦ mark: signals new section in nav context */
-.header-nav a.nav-link--new {
-  color: #F5C97A;
-}
-.header-nav a.nav-link--new:hover,
-.header-nav a.nav-link--new.active {
-  color: #FAF0DC;
-}
 .nav-new-mark {
+  display: none;
   font-size: 7px;
   vertical-align: super;
   margin-left: 2px;
@@ -2102,6 +2095,73 @@
   font-weight: 500;
   color: var(--forest-charcoal);
   white-space: nowrap;
+}
+
+/* Get Directions CTA + BYOB note */
+.contact-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.contact-directions-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.375rem;
+  border: 0.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--text-xs);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  transition: background var(--duration-fast) var(--ease),
+              border-color var(--duration-fast) var(--ease);
+}
+
+.contact-directions-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.contact-byob-note {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.48);
+  font-family: var(--font-body);
+  letter-spacing: 0.025em;
+  font-style: italic;
+}
+
+/* Fix social button borders — invisible on dark background without override */
+.contact-section .contact-social-btn {
+  border-color: rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.80);
+}
+
+.contact-section .contact-social-btn:hover {
+  background: rgba(255, 255, 255, 0.10);
+  border-color: rgba(255, 255, 255, 0.50);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .contact-actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.875rem;
+  }
+
+  .contact-directions-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 /* Map embed */
